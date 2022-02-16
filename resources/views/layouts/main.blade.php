@@ -15,7 +15,9 @@
                 <div class="row" style="display: inline-block;">
                     @include('contents.player-in-the-house')
                 </div>
-                    @include('contents.omzet-minggu-ini')
+                    @include('contents.omzet-mingguan')
+                    @include('contents.omzet-bulanan')
+                    @include('contents.omzet-bulanan-zt3')
                 <div class="row">
                     <div class="col-md-4 col-sm-4 ">
                         <div class="x_panel tile fixed_height_320">
