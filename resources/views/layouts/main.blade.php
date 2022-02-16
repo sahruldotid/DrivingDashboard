@@ -15,7 +15,7 @@
                 <div class="row" style="display: inline-block;">
                     @include('contents.player-in-the-house')
                 </div>
-                    @include('contents.omzet-mingguan')
+                    @include('contents.omzet-harian')
                     @include('contents.omzet-bulanan')
                     @include('contents.omzet-bulanan-zt3')
                 <div class="row">

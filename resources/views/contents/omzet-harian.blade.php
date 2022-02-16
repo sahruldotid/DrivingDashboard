@@ -3,39 +3,42 @@
          <div class="dashboard_graph">
              <div class="row x_title">
                  <div class="col-md-12">
-                     <h3>Omzet Minggu Ini</h3>
+                     <h3>Trend Omzet Daily</h3>
                  </div>
              </div>
              <div class="col-md-12 col-sm-12 ">
-                 <canvas id="omzet-mingguan"></canvas>
+                 <canvas id="omzet-daily"></canvas>
                  <script>
-                     const context = document.getElementById('omzet-mingguan').getContext('2d');
-                     const omzet_mingguan = new Chart(context, {
+                     const context = document.getElementById('omzet-daily').getContext('2d');
+                     const omzet_daily = new Chart(context, {
                          type: 'line',
                          data: {
-                             labels: ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'],
+                             // TODO : Check tanggal merah dan hari yang pas
+                             labels: Array.from(Array(31).keys(), x => ["A", x]),
                              datasets: [{
                                  label: 'Omzet Member',
-                                 data: Array(7).fill().map(() => Math.round(Math.random() * 7)),
+                                 data: Array(31).fill().map(() => Math.round(Math.random() * 31)),
                                  fill: false,
                                  borderColor: 'rgb(39, 149, 39)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Guest',
-                                 data: Array(7).fill().map(() => Math.round(Math.random() * 7)),
+                                 data: Array(31).fill().map(() => Math.round(Math.random() * 31)),
                                  fill: false,
                                  borderColor: 'rgb(255, 0, 0)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Total',
-                                 data: Array(7).fill().map(() => Math.round(Math.random() * 7)),
+                                 data: Array(31).fill().map(() => Math.round(Math.random() * 31)),
                                  fill: false,
                                  borderColor: 'rgb(75, 192, 192)',
                                  tension: 0.1
                              }]
                          },
+
+
                      });
 
                  </script>
