@@ -1,6 +1,7 @@
 {{-- // TODO: pecah jadi beberapa bagian navbar, header, body, footer dst dst --}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     @include('partials.header')
 </head>
@@ -14,75 +15,7 @@
                 <div class="row" style="display: inline-block;">
                     @include('contents.player-in-the-house')
                 </div>
-                <div class="row">
-                    <div class="col-md-12 col-sm-12 ">
-                        <div class="dashboard_graph">
-                            <div class="row x_title">
-                                <div class="col-md-6">
-                                    <h3>Network Activities <small>Graph title sub-title</small></h3>
-                                </div>
-                                <div class="col-md-6">
-                                    <div id="reportrange" class="pull-right"
-                                        style="background: #fff; cursor: pointer; padding: 5px 10px; border: 1px solid #ccc">
-                                        <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                        <span>December 30, 2014 - January 28, 2015</span> <b class="caret"></b>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-9 col-sm-9 ">
-                                <div id="chart_plot_01" class="demo-placeholder"></div>
-                            </div>
-                            <div class="col-md-3 col-sm-3  bg-white">
-                                <div class="x_title">
-                                    <h2>Top Campaign Performance</h2>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <div>
-                                        <p>Facebook Campaign</p>
-                                        <div class="">
-                                            <div class="progress progress_sm" style="width: 76%;">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                    data-transitiongoal="80"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Twitter Campaign</p>
-                                        <div class="">
-                                            <div class="progress progress_sm" style="width: 76%;">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                    data-transitiongoal="60"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-sm-12 ">
-                                    <div>
-                                        <p>Conventional Media</p>
-                                        <div class="">
-                                            <div class="progress progress_sm" style="width: 76%;">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                    data-transitiongoal="40"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div>
-                                        <p>Bill boards</p>
-                                        <div class="">
-                                            <div class="progress progress_sm" style="width: 76%;">
-                                                <div class="progress-bar bg-green" role="progressbar"
-                                                    data-transitiongoal="50"></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <br />
+                    @include('contents.omzet-minggu-ini')
                 <div class="row">
                     <div class="col-md-4 col-sm-4 ">
                         <div class="x_panel tile fixed_height_320">
@@ -357,7 +290,8 @@
                                                     <div class="byline">
                                                         <span>13 hours ago</span> by <a>Jane Smith</a>
                                                     </div>
-                                                    <p class="excerpt">Film festivals used to be do-or-die moments for
+                                                    <p class="excerpt">Film festivals used to be do-or-die
+                                                        moments for
                                                         movie makers. They were where you met the producers that could
                                                         fund your project, and if the buyers liked your flick, they’d
                                                         pay to Fast-forward and… <a>Read&nbsp;More</a>
@@ -374,7 +308,8 @@
                                                     <div class="byline">
                                                         <span>13 hours ago</span> by <a>Jane Smith</a>
                                                     </div>
-                                                    <p class="excerpt">Film festivals used to be do-or-die moments for
+                                                    <p class="excerpt">Film festivals used to be do-or-die
+                                                        moments for
                                                         movie makers. They were where you met the producers that could
                                                         fund your project, and if the buyers liked your flick, they’d
                                                         pay to Fast-forward and… <a>Read&nbsp;More</a>
@@ -391,7 +326,8 @@
                                                     <div class="byline">
                                                         <span>13 hours ago</span> by <a>Jane Smith</a>
                                                     </div>
-                                                    <p class="excerpt">Film festivals used to be do-or-die moments for
+                                                    <p class="excerpt">Film festivals used to be do-or-die
+                                                        moments for
                                                         movie makers. They were where you met the producers that could
                                                         fund your project, and if the buyers liked your flick, they’d
                                                         pay to Fast-forward and… <a>Read&nbsp;More</a>
@@ -408,7 +344,8 @@
                                                     <div class="byline">
                                                         <span>13 hours ago</span> by <a>Jane Smith</a>
                                                     </div>
-                                                    <p class="excerpt">Film festivals used to be do-or-die moments for
+                                                    <p class="excerpt">Film festivals used to be do-or-die
+                                                        moments for
                                                         movie makers. They were where you met the producers that could
                                                         fund your project, and if the buyers liked your flick, they’d
                                                         pay to Fast-forward and… <a>Read&nbsp;More</a>
@@ -432,7 +369,8 @@
                                             </li>
                                             <li class="dropdown">
                                                 <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown"
-                                                    role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    role="button" aria-expanded="false"><i
+                                                        class="fa fa-wrench"></i></a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="index.html#">Settings 1</a>
                                                     <a class="dropdown-item" href="index.html#">Settings 2</a>
@@ -489,7 +427,8 @@
                                             </li>
                                             <li class="dropdown">
                                                 <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown"
-                                                    role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    role="button" aria-expanded="false"><i
+                                                        class="fa fa-wrench"></i></a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="index.html#">Settings 1</a>
                                                     <a class="dropdown-item" href="index.html#">Settings 2</a>
@@ -505,48 +444,66 @@
                                             <ul class="to_do">
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Schedule meeting with new
-                                                        client </p>
+                                                        <input type="checkbox" class="flat"> Schedule meeting
+                                                        with new
+                                                        client
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Create email address for
-                                                        new intern</p>
+                                                        <input type="checkbox" class="flat"> Create email
+                                                        address for
+                                                        new intern
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Have IT fix the network
-                                                        printer</p>
+                                                        <input type="checkbox" class="flat"> Have IT fix the
+                                                        network
+                                                        printer
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Copy backups to offsite
-                                                        location</p>
+                                                        <input type="checkbox" class="flat"> Copy backups to
+                                                        offsite
+                                                        location
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Food truck fixie locavors
-                                                        mcsweeney</p>
+                                                        <input type="checkbox" class="flat"> Food truck fixie
+                                                        locavors
+                                                        mcsweeney
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Food truck fixie locavors
-                                                        mcsweeney</p>
+                                                        <input type="checkbox" class="flat"> Food truck fixie
+                                                        locavors
+                                                        mcsweeney
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Create email address for
-                                                        new intern</p>
+                                                        <input type="checkbox" class="flat"> Create email
+                                                        address for
+                                                        new intern
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Have IT fix the network
-                                                        printer</p>
+                                                        <input type="checkbox" class="flat"> Have IT fix the
+                                                        network
+                                                        printer
+                                                    </p>
                                                 </li>
                                                 <li>
                                                     <p>
-                                                        <input type="checkbox" class="flat"> Copy backups to offsite
-                                                        location</p>
+                                                        <input type="checkbox" class="flat"> Copy backups to
+                                                        offsite
+                                                        location
+                                                    </p>
                                                 </li>
                                             </ul>
                                         </div>
@@ -562,7 +519,8 @@
                                             </li>
                                             <li class="dropdown">
                                                 <a href="index.html#" class="dropdown-toggle" data-toggle="dropdown"
-                                                    role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                                    role="button" aria-expanded="false"><i
+                                                        class="fa fa-wrench"></i></a>
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" href="index.html#">Settings 1</a>
                                                     <a class="dropdown-item" href="index.html#">Settings 2</a>
