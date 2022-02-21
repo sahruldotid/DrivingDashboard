@@ -9,37 +9,52 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="omzet-daily"></canvas>
                  <script>
-                     const context = document.getElementById('omzet-daily').getContext('2d');
-                     const omzet_daily = new Chart(context, {
-                         type: 'line',
-                         data: {
-                             // TODO : Check tanggal merah dan hari yang pas
-                             labels: Array.from(Array(31).keys(), x => ["A", x]),
-                             datasets: [{
+                    //  Chart.register([ChartDataLabels]);
+                    // https://stackoverflow.com/questions/71012950/chart-js-v3-5-1-change-bar-background-label-font-color-on-click
+                     const data = {
+                         labels: getArrBeforeToday(),
+                         datasets: [{
                                  label: 'Omzet Member',
-                                 data: Array(31).fill().map(() => Math.round(Math.random() * 31)),
+                                 data: Array(getArrBeforeToday().length).fill().map(() => Math.round(
+                                     Math.random() * getArrBeforeToday().length)),
                                  fill: false,
                                  borderColor: 'rgb(39, 149, 39)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Guest',
-                                 data: Array(31).fill().map(() => Math.round(Math.random() * 31)),
+                                 data: Array(getArrBeforeToday().length).fill().map(() => Math.round(Math
+                                     .random() * getArrBeforeToday().length)),
                                  fill: false,
                                  borderColor: 'rgb(255, 0, 0)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Total',
-                                 data: Array(31).fill().map(() => Math.round(Math.random() * 31)),
+                                 data: Array(getArrBeforeToday().length).fill().map(() => Math.round(Math
+                                     .random() * getArrBeforeToday().length)),
                                  fill: false,
                                  borderColor: 'rgb(75, 192, 192)',
                                  tension: 0.1
-                             }]
-                         },
+                             }
+                         ]
+                     };
+                     const config = {
+                         type: 'line',
+                         data,
+                         options: {
+                             legend: {
+                                 labels: {
+                                     fontColor: 'white'
+                                 }
+                             }
+                         }
+                     };
+                     const plugin = {
 
-
-                     });
+                     }
+                     const context = document.getElementById('omzet-daily');
+                     const omzet_daily = new Chart(context, config);
 
                  </script>
              </div>

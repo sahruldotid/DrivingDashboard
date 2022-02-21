@@ -8,11 +8,14 @@
     <link href="https://colorlib.com/polygon/vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://colorlib.com/polygon/vendors/nprogress/nprogress.css" rel="stylesheet">
     <link href="https://colorlib.com/polygon/vendors/iCheck/skins/flat/green.css" rel="stylesheet">
-    <link href="https://colorlib.com/polygon/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css"
-        rel="stylesheet">
+    <link href="https://colorlib.com/polygon/vendors/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css" rel="stylesheet">
     <link href="https://colorlib.com/polygon/vendors/jqvmap/dist/jqvmap.min.css" rel="stylesheet" />
     <link href="https://colorlib.com/polygon/vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
-    <link href="https://colorlib.com/polygon/build/css/custom.min.css" rel="stylesheet">
+    {{-- <link href="https://colorlib.com/polygon/build/css/custom.min.css" rel="stylesheet"> --}}
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <script type="text/javascript" src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+    <script type="text/javascript" src="{{ asset('/js/calendar.js') }}"></script>
+    <link href="{{ asset('/css/calendar.css') }}" rel="stylesheet" />
     <meta name="robots" content="index, nofollow">
