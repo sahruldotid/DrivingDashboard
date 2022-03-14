@@ -17,7 +17,10 @@ Route::get('/', function () {
     return view('layouts.main');
 });
 
+// Route::get('/omzet', function(){
+//     return view('calendar');
+// });
 
-Route::get('/calendar', function(){
-    return view('calendar');
-});
+// Route::get('/player', function(){
+//     return view('calendar');
+// });

@@ -1,13 +1,13 @@
-<div class="tile_count">
-    <div class="col-md-2">
-        <div class="calendar">
+ <div class="col-md-2 date-today ">
+        <div class="calendar text-center">
             <h3 class="day">Monday</h3>
             <h1 class="date">28</h1>
             <h3 class="month">February</h3>
             <h2 class="year">2022</h2>
         </div>
     </div>
-    {{-- make div center vertically --}}
+
+<div class="tile_count">
     <div class="col-md-2 col-sm-4 tile_stats_count">
         <span class="count_top"><i class="fa fa-user"></i> Player in The House</span>
         <div class="count">2500</div>

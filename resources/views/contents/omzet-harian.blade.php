@@ -11,7 +11,8 @@
                  <script>
                     //  Chart.register([ChartDataLabels]);
                     // https://stackoverflow.com/questions/71012950/chart-js-v3-5-1-change-bar-background-label-font-color-on-click
-                     const data = {
+                    // https://www.chartjs.org/docs/latest/samples/scale-options/titles.html
+                    const data = {
                          labels: getArrBeforeToday(),
                          datasets: [{
                                  label: 'Omzet Member',
