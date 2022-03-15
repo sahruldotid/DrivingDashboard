@@ -20,5 +20,5 @@ use App\Http\Controllers\Api\PlayerController;
 // });
 
 Route::get('/omzet-daily', [OmzetController::class, 'daily']);
-Route::get('/player', [PlayerController::class, 'index']);
+Route::get('/omzet-monthly', [OmzetController::class, 'monthly']);
 
