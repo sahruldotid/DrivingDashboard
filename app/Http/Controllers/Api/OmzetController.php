@@ -7,13 +7,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class OmzetController extends Controller
 {
-    public function getDay($date)
-    {
-        $day = date('d', strtotime($date));
-        return $day;
-    }
 
     function daily(Request $request){
+
+        $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
+
         $member = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
                         select date(od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                         from golf_fnb.order_list ol
@@ -50,6 +51,11 @@ class OmzetController extends Controller
 
     }
     function monthly(Request $request){
+        $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
+
         $member = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
@@ -90,6 +96,11 @@ class OmzetController extends Controller
     }
 
     function monthly_zt3(Request $request){
+        $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
+
         $member = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
