@@ -27,3 +27,4 @@
         data-cf-beacon='{"rayId":"6dbcf349bea84937","token":"cd0b4b3a733644fc843ef0b185f98241","version":"2021.12.0","si":100}'
         crossorigin="anonymous"></script>
     <script type="text/javascript" src="{{ asset('/js/calendar.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('/js/parseAPI.js') }}"></script>
