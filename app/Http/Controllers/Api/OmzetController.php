@@ -5,10 +5,49 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use DateTime;
+use DatePeriod;
+use DateInterval;
+
 class OmzetController extends Controller
 
 {
-    // omzet daily
+
+    function getDayPeriod($startDate, $endDate)
+    {
+        $array = array();
+        $period = new DatePeriod(
+        new DateTime($startDate),
+        new DateInterval('P1D'),
+        new DateTime($endDate)
+        );
+
+        foreach ($period as $date) {
+            $array[] = $date->format('Y-m-d');
+        }
+        return $array;
+    }
+
+    function formatOmzetDaily($period, $data)
+    {
+        $array = array();
+        for ($i = 0; $i < count($period); $i++) {
+            $array[$i]['tanggal'] = $period[$i];
+            $array[$i]['jumlah'] = 0;
+            for ($j = 0; $j < count($data); $j++) {
+                if ($period[$i] == $data[$j]['tanggal']) {
+                    $array[$i]['jumlah'] = $data[$j]['jumlah'];
+                }
+            }
+        }
+
+        // foreach ($period as $key => $value) {
+
+        // }
+        return $array;
+    }
+
+
     function daily(Request $request){
         $this->validate($request, [
             'startDate'  =>  'required|date',
@@ -59,6 +98,13 @@ class OmzetController extends Controller
                         ) as a
                         group by a.tanggal
                         order by a.tanggal asc");
+
+        // fill the blank data
+        $period = $this->getDayPeriod($request->startDate, $request->endDate);
+        $member = $this->formatOmzetDaily($period, json_decode(json_encode($member), true));
+        $guest = $this->formatOmzetDaily($period, json_decode(json_encode($guest), true));
+        $total = $this->formatOmzetDaily($period, json_decode(json_encode($total), true));
+
 
         return response()->json([
             'member' => $member,

@@ -9,10 +9,11 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="omzet-daily"></canvas>
                  <script>
-                    //  Chart.register([ChartDataLabels]);
-                    // https://stackoverflow.com/questions/71012950/chart-js-v3-5-1-change-bar-background-label-font-color-on-click
-                    // https://www.chartjs.org/docs/latest/samples/scale-options/titles.html
-                    const data = {
+                     //  Chart.register([ChartDataLabels]);
+                     // https://stackoverflow.com/questions/71012950/chart-js-v3-5-1-change-bar-background-label-font-color-on-click
+                     // https://www.chartjs.org/docs/latest/samples/scale-options/titles.html
+
+                     const data = {
                          labels: getArrBeforeToday(),
                          datasets: [{
                                  label: 'Omzet Member',
@@ -51,9 +52,6 @@
                              }
                          }
                      };
-                     const plugin = {
-
-                     }
                      const context = document.getElementById('omzet-daily');
                      const omzet_daily = new Chart(context, config);
 
