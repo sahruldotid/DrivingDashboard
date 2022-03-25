@@ -13,28 +13,28 @@
                      // https://stackoverflow.com/questions/71012950/chart-js-v3-5-1-change-bar-background-label-font-color-on-click
                      // https://www.chartjs.org/docs/latest/samples/scale-options/titles.html
 
+                     var date = new Date();
+                     var daftarHarian = getDailyOmzet(date.getFullYear(), date.getMonth() + 1, date.getDate() + 1);
+
                      const data = {
-                         labels: getArrBeforeToday(),
+                         labels: getArrBeforeToday(date),
                          datasets: [{
                                  label: 'Omzet Member',
-                                 data: Array(getArrBeforeToday().length).fill().map(() => Math.round(
-                                     Math.random() * getArrBeforeToday().length)),
+                                 data: parseOmzet(daftarHarian).member,
                                  fill: false,
                                  borderColor: 'rgb(39, 149, 39)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Guest',
-                                 data: Array(getArrBeforeToday().length).fill().map(() => Math.round(Math
-                                     .random() * getArrBeforeToday().length)),
+                                 data: parseOmzet(daftarHarian).guest,
                                  fill: false,
                                  borderColor: 'rgb(255, 0, 0)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Total',
-                                 data: Array(getArrBeforeToday().length).fill().map(() => Math.round(Math
-                                     .random() * getArrBeforeToday().length)),
+                                 data: parseOmzet(daftarHarian).total,
                                  fill: false,
                                  borderColor: 'rgb(75, 192, 192)',
                                  tension: 0.1

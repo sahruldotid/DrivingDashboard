@@ -18,6 +18,19 @@ function getJson(options, startDate, endDate) {
     return json;
 }
 
+function getArrBeforeToday(today) {
+    var arr = [];
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();
+    for (var i = 30 - 1; i >= 0; i--) {
+        var date = new Date(year, month - 1, day - i);
+        var strWeekday = date.toLocaleString('en-us', { weekday: 'short' });
+        var numDay = date.getDate();
+        arr.push([numDay, strWeekday]);
+    }
+    return arr;
+}
 
 function dateToString(date) {
     var year = date.getFullYear();
@@ -45,7 +58,7 @@ function getMonthName(data) {
 function getDailyOmzet(year, month, day) {
     var today = new Date(year, month - 1, day);
     var priorDate = new Date(today);
-    priorDate.setDate(today.getDate() - 29);
+    priorDate.setDate(today.getDate() - 30);
     var start = dateToString(priorDate);
     var end = dateToString(today);
     daily = getJson('omzet-daily', start, end);
