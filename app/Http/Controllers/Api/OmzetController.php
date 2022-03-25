@@ -28,7 +28,23 @@ class OmzetController extends Controller
         return $array;
     }
 
-    function formatOmzetDaily($period, $data)
+    function getMonthPeriod($startDate, $endDate)
+    {
+        $array = array();
+        $period = new DatePeriod(
+        new DateTime($startDate),
+        new DateInterval('P1M'),
+        new DateTime($endDate)
+        );
+
+        foreach ($period as $date) {
+            $array[] = $date->format('Y-m');
+        }
+        return $array;
+    }
+
+
+    function formatOmzet($period, $data)
     {
         $array = array();
         for ($i = 0; $i < count($period); $i++) {
@@ -41,11 +57,9 @@ class OmzetController extends Controller
             }
         }
 
-        // foreach ($period as $key => $value) {
-
-        // }
         return $array;
     }
+
 
 
     function daily(Request $request){
@@ -101,9 +115,9 @@ class OmzetController extends Controller
 
         // fill the blank data
         $period = $this->getDayPeriod($request->startDate, $request->endDate);
-        $member = $this->formatOmzetDaily($period, json_decode(json_encode($member), true));
-        $guest = $this->formatOmzetDaily($period, json_decode(json_encode($guest), true));
-        $total = $this->formatOmzetDaily($period, json_decode(json_encode($total), true));
+        $member = $this->formatOmzet($period, json_decode(json_encode($member), true));
+        $guest = $this->formatOmzet($period, json_decode(json_encode($guest), true));
+        $total = $this->formatOmzet($period, json_decode(json_encode($total), true));
 
 
         return response()->json([
@@ -121,7 +135,7 @@ class OmzetController extends Controller
             'endDate'    =>  'required|date|after_or_equal:start_date'
         ]);
 
-        $member = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
+        $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
@@ -138,7 +152,7 @@ class OmzetController extends Controller
                             group by a.tanggal
                             order by a.tanggal asc");
 
-        $guest = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
+        $guest = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
@@ -156,7 +170,7 @@ class OmzetController extends Controller
                             order by a.tanggal asc");
 
 
-        $total = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
+        $total = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
@@ -172,6 +186,14 @@ class OmzetController extends Controller
 
                             group by a.tanggal
                             order by a.tanggal asc");
+
+        // fill the blank data
+        $period = $this->getMonthPeriod($request->startDate, $request->endDate);
+        $member = $this->formatOmzet($period, json_decode(json_encode($member), true));
+        $guest = $this->formatOmzet($period, json_decode(json_encode($guest), true));
+        $total = $this->formatOmzet($period, json_decode(json_encode($total), true));
+
+
         return response()->json([
             'member' => $member,
             'guest' => $guest,
@@ -187,7 +209,7 @@ class OmzetController extends Controller
             'endDate'    =>  'required|date|after_or_equal:start_date'
         ]);
 
-        $member = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
+        $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
@@ -204,7 +226,7 @@ class OmzetController extends Controller
                             group by a.tanggal
                             order by a.tanggal asc");
 
-        $guest = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
+        $guest = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
@@ -221,7 +243,7 @@ class OmzetController extends Controller
                             group by a.tanggal
                             order by a.tanggal asc");
 
-        $total = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
+        $total = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
@@ -237,6 +259,12 @@ class OmzetController extends Controller
 
                             group by a.tanggal
                             order by a.tanggal asc");
+
+        $period = $this->getMonthPeriod($request->startDate, $request->endDate);
+        $member = $this->formatOmzet($period, json_decode(json_encode($member), true));
+        $guest = $this->formatOmzet($period, json_decode(json_encode($guest), true));
+        $total = $this->formatOmzet($period, json_decode(json_encode($total), true));
+
         return response()->json([
             'member' => $member,
             'guest' => $guest,
