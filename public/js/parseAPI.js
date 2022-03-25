@@ -26,28 +26,21 @@ function dateToString(date) {
     return year + '-' + month + '-' + day;
 }
 
-function checkDailyDate(date) {
-    var arr = [];
-    var result = {};
-    var today = new Date();
-    var year = yr || today.getFullYear();
-    var month = mo || today.getMonth() + 1;
-    var day = dy || today.getDate();
-    for (var i = 30 - 1; i >= 0; i--) {
-        var date = new Date(year, month - 1, day - i);
-        var numDay = date.getDate();
-        var numMonth = date.getMonth() + 1;
-        var numYear = date.getFullYear();
-        arr.push(numYear + '-' + numMonth + '-' + numDay);
-    }
-    result.startDate = arr[0];
-    result.endDate = arr[arr.length - 1];
-    if (range != undefined) {
-        return arr;
-    } else {
-        return result;
-    }
+function getShortDay(date) {
+    var date = new Date(date);
+    var day = date.getDay();
+    var dayArr = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    return dayArr[day];
 }
+
+// create function that return month name by given date in string format yyyy-mm-dd
+function getMonthName(data) {
+    var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nop', 'Des'];
+    return monthArr.slice(0, data.total.length);
+}
+
+
+
 
 function getDailyOmzet(year, month, day) {
     var today = new Date(year, month - 1, day);
@@ -58,3 +51,40 @@ function getDailyOmzet(year, month, day) {
     daily = getJson('omzet-daily', start, end);
     return daily;
 }
+
+function getOmzetMonthly(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month - 1, day);
+    monthly = getJson('omzet-monthly', dateToString(start), dateToString(end));
+    return monthly;
+}
+
+
+function getOmzetMonthlyZT3(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month - 1, day);
+    monthly = getJson('omzet-monthly-zt3', dateToString(start), dateToString(end));
+    return monthly;
+}
+
+
+function parseOmzet(data) {
+    var omzet = {
+        "guest": [],
+        "member": [],
+        "total": [],
+
+    };
+    data.guest.forEach(element => {
+        omzet.guest.push(element.jumlah);
+    });
+    data.member.forEach(element => {
+        omzet.member.push(element.jumlah);
+    });
+    data.total.forEach(element => {
+        omzet.total.push(element.jumlah);
+    });
+    return omzet;
+
+}
+

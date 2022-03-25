@@ -9,28 +9,30 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="omzet-bulanan-zt3"></canvas>
                  <script>
+                    var date = new Date();
+                    var daftarBulananZT3 = getOmzetMonthlyZT3(date.getFullYear(), date.getMonth() + 1, date.getDate());
                      const ctx_zt3 = document.getElementById('omzet-bulanan-zt3').getContext('2d');
                      const omzet_bulanan_zt3 = new Chart(ctx_zt3, {
                          type: 'line',
                          data: {
-                             labels: getFirstMonthUntilNow(),
+                             labels: getMonthName(daftarBulananZT3),
                              datasets: [{
                                  label: 'Omzet Member',
-                                 data: Array(12).fill().map(() => Math.round(Math.random() * 12)),
+                                 data: parseOmzet(daftarBulananZT3).member,
                                  fill: false,
                                  borderColor: 'rgb(39, 149, 39)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Guest',
-                                 data: Array(12).fill().map(() => Math.round(Math.random() * 12)),
+                                 data: parseOmzet(daftarBulananZT3).guest,
                                  fill: false,
                                  borderColor: 'rgb(255, 0, 0)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Total',
-                                 data: Array(12).fill().map(() => Math.round(Math.random() * 12)),
+                                 data: parseOmzet(daftarBulananZT3).total,
                                  fill: false,
                                  borderColor: 'rgb(75, 192, 192)',
                                  tension: 0.1

@@ -22,4 +22,5 @@
 
 <link href="{{ asset('/css/calendar.css') }}" rel="stylesheet" />
 <script type="text/javascript" src="{{ asset('/js/parseAPI.js') }}"></script>
+<script src="https://colorlib.com/polygon/vendors/jquery/dist/jquery.min.js"></script>
 <meta name="robots" content="index, nofollow">

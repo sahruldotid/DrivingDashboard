@@ -9,28 +9,30 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="omzet-bulanan"></canvas>
                  <script>
+                     var date = new Date();
+                     var daftarBulanan = getOmzetMonthly(date.getFullYear(), date.getMonth() + 1, date.getDate());
                      const ctx = document.getElementById('omzet-bulanan').getContext('2d');
                      const omzet_bulanan = new Chart(ctx, {
                          type: 'line',
                          data: {
-                             labels: getFirstMonthUntilNow(),
+                             labels: getMonthName(daftarBulanan),
                              datasets: [{
                                  label: 'Omzet Member',
-                                 data: Array(12).fill().map(() => Math.round(Math.random() * 12)),
+                                 data: parseOmzet(daftarBulanan).member,
                                  fill: false,
                                  borderColor: 'rgb(39, 149, 39)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Guest',
-                                 data: Array(12).fill().map(() => Math.round(Math.random() * 12)),
+                                 data: parseOmzet(daftarBulanan).guest,
                                  fill: false,
                                  borderColor: 'rgb(255, 0, 0)',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Total',
-                                 data: Array(12).fill().map(() => Math.round(Math.random() * 12)),
+                                 data: parseOmzet(daftarBulanan).total,
                                  fill: false,
                                  borderColor: 'rgb(75, 192, 192)',
                                  tension: 0.1
