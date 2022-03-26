@@ -17,7 +17,7 @@
 <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 <script type="text/javascript" src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js">
 </script>
-<script type="text/javascript" src="{{ asset('/js/calendar.js') }}"></script>
+{{-- <script type="text/javascript" src="{{ asset('/js/calendar.js') }}"></script> --}}
 
 <link href="{{ asset('/css/calendar.css') }}" rel="stylesheet" />
 <script type="text/javascript" src="{{ asset('/js/parseAPI.js') }}"></script>

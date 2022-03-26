@@ -12,9 +12,9 @@
             @include('partials.left-sidebar')
             @include('partials.top-navbar')
             <div class="right_col" role="main">
-                <div class="row" style="display: inline-block;">
+                {{-- <div class="row">
                     @include('contents.player-in-the-house')
-                </div>
+                </div> --}}
                 @include('contents.omzet-harian')
                 @include('contents.omzet-bulanan')
                 @include('contents.omzet-bulanan-zt3')

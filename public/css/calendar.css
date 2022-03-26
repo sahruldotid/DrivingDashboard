@@ -36,22 +36,22 @@
 } */
 .day {
     margin: 0;
-    font-size: small;
+    font-size: 1.1rem;
 }
 
 .date {
     margin: 0;
-    font-size: small;
+    font-size: 1.1rem;
 }
 
 .month {
     margin: 0;
-    font-size: small;
+    font-size: 1.1rem;
 }
 
 .year {
     margin: 0;
-    font-size: small;
+    font-size: 1.1rem;
 }
 
 .date-today{
@@ -62,5 +62,6 @@
     color: rgba(255, 255, 255, 0.8);
     border-radius: 20px;
     font-weight: 500;
+    margin-bottom: 10px;
 
 }

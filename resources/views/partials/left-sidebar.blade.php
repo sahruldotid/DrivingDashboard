@@ -1,7 +1,19 @@
 <div class="col-md-3 left_col">
     <div class="left_col scroll-view">
         <div class="navbar nav_title" style="border: 0;">
-            <a href="/" class="site_title"><img src="{{ asset('/images/logobdg.png') }}" width="40" height="40" alt=""> <span>BDG System</span></a>
+            <a href="/" class="site_title"><img src="{{ asset('/images/logobdg.png') }}"
+                    width="40" height="40" alt=""> <span>BDG System</span></a>
+        </div>
+        <div class="clearfix"></div>
+        <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+            <div class="menu_section">
+                <ul class="nav side-menu">
+                    <li><a href="/" id="left-date" ><i class="fa fa-clock-o"></i>Sabtu, 26 Desember 2022</a>
+                    </li>
+
+                </ul>
+            </div>
+
         </div>
         {{-- <div class="clearfix"></div>
                     <div class="sidebar-footer hidden-small">
