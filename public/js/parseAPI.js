@@ -100,6 +100,20 @@ function getOmzetMonthlyTotZT(year, month){
     return yearly;
 }
 
+function getOmzetDailyTot(year, month, day){
+    var start = new Date(year, month, day);
+    var end = new Date(year, month, day + 1);
+    yearly = getJson('omzet-yearly', dateToString(start), dateToString(end));
+    return yearly;
+}
+
+function getOmzetDailyTotZT(year, month, day){
+    var start = new Date(year, month, day);
+    var end = new Date(year, month, day + 1);
+    yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
+    return yearly;
+}
+
 function getPlayerMonthly(year, month) {
     var start = new Date(year, month);
     var end = new Date(year, month + 12);
