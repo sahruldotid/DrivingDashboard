@@ -1,6 +1,6 @@
 <div class="row justify-content-center" style="width: 100%;">
     <div class="tile_count" style="margin-right: 2%;">
-        <div class="tile_stats_count" style="border-style: groove; border-bottom: solid; border-color: 73879C;">
+        <div class="tile_stats_count" style="border-style: groove; border-bottom: solid; border-color: #73879C;">
             <span class="count_top">
                 <i class = "fa fa-money">
                 </i>
@@ -12,32 +12,32 @@
                 </span>
             </div>
             <div class="row">
-                <div class="column col-md" style="margin-top: 3%; border-style: groove; border-top: hidden; border-left: hidden; border-bottom: hidden; border-color: 73879C;">
+                <div class="column col-md" style="margin-top: 3%; border-style: groove; border-top: hidden; border-left: hidden; border-bottom: hidden; border-color: #73879C;">
                         <div>
                             <span class="count_bottom">
-                                Member: Rp. <span id="outputmember"> </span>
+                                Member: Rp. <span id="outputmember" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                Guest: Rp. <span id="outputguest"> </span>
+                                Guest: Rp. <span id="outputguest" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                 </div>
                 <div class="column col-md" style="margin-top: 3%">
                         <div>
                             <span class="count_bottom">
-                                ZT1: Rp. <span id="outputzt1"> </span>
+                                ZT1: Rp. <span id="outputzt1" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                ZT2: Rp. <span id="outputzt2"> </span>
+                                ZT2: Rp. <span id="outputzt2" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                ZT3: Rp. <span id="outputzt3"> </span>
+                                ZT3: Rp. <span id="outputzt3" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                 </div>
@@ -115,7 +115,7 @@
         </div>
     </div>
     <div class="tile_count" style="margin-right: 2%;">
-        <div class="tile_stats_count" style="border-style: groove; border-bottom: solid; border-color: 73879C;">
+        <div class="tile_stats_count" style="border-style: groove; border-bottom: solid; border-color: #73879C;">
             <span class="count_top">
                 <i class = "fa fa-money">
                 </i>
@@ -127,32 +127,32 @@
                 </span>
             </div>
             <div class="row">
-                <div class="column col-md" style="margin-top: 3%; border-style: groove; border-top: hidden; border-left: hidden; border-bottom: hidden; border-color: 73879C;">
+                <div class="column col-md" style="margin-top: 3%; border-style: groove; border-top: hidden; border-left: hidden; border-bottom: hidden; border-color: #73879C;">
                         <div>
                             <span class="count_bottom">
-                                Member: Rp. <span id="outputmonthlymember"> </span>
+                                Member: Rp. <span id="outputmonthlymember" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                Guest: Rp. <span id="outputmonthlyguest"> </span>
+                                Guest: Rp. <span id="outputmonthlyguest" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                 </div>
                 <div class="column col-md" style="margin-top: 3%">
                         <div>
                             <span class="count_bottom">
-                                ZT1: Rp. <span id="outputmonthlyzt1"> </span>
+                                ZT1: Rp. <span id="outputmonthlyzt1" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                ZT2: Rp. <span id="outputmonthlyzt2"> </span>
+                                ZT2: Rp. <span id="outputmonthlyzt2" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                ZT3: Rp. <span id="outputmonthlyzt3"> </span>
+                                ZT3: Rp. <span id="outputmonthlyzt3" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                 </div>
@@ -230,7 +230,7 @@
         </div>   
     </div>
     <div class="tile_count">
-        <div class="tile_stats_count" style="border-style: groove; border-bottom: solid; border-color: 73879C;">
+        <div class="tile_stats_count" style="border-style: groove; border-bottom: solid; border-color: #73879C;">
             <span class="count_top">
                 <i class = "fa fa-money">
                 </i>
@@ -242,32 +242,32 @@
                 </span>
             </div>
             <div class="row">
-                <div class="column col-md" style="margin-top: 3%; border-style: groove; border-top: hidden; border-left: hidden; border-bottom: hidden; border-color: 73879C;">
+                <div class="column col-md" style="margin-top: 3%; border-style: groove; border-top: hidden; border-left: hidden; border-bottom: hidden; border-color: #73879C;">
                         <div>
                             <span class="count_bottom">
-                                Member: Rp. <span id="outputdailymember"> </span>
+                                Member: Rp. <span id="outputdailymember" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                Guest: Rp. <span id="outputdailyguest"> </span>
+                                Guest: Rp. <span id="outputdailyguest" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                 </div>
                 <div class="column col-md" style="margin-top: 3%">
                         <div>
                             <span class="count_bottom">
-                                ZT1: Rp. <span id="outputdailyzt1"> </span>
+                                ZT1: Rp. <span id="outputdailyzt1" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                ZT2: Rp. <span id="outputdailyzt2"> </span>
+                                ZT2: Rp. <span id="outputdailyzt2" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                         <div>
                             <span class="count_bottom">
-                                ZT3: Rp. <span id="outputdailyzt3"> </span>
+                                ZT3: Rp. <span id="outputdailyzt3" style = "color: #FF8A00;"> </span>
                             </span>
                         </div>
                 </div>
