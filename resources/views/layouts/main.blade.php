@@ -15,9 +15,11 @@
                 {{-- <div class="row">
                     @include('contents.player-in-the-house')
                 </div> --}}
+                @include('contents.omzet-allcat')
                 @include('contents.omzet-harian')
                 @include('contents.omzet-bulanan')
                 @include('contents.player-bulanan-total')
+                @include('contents.omzet-bulanan-zt2')
                 @include('contents.omzet-bulanan-zt3')
             </div>
             <footer>

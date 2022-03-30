@@ -22,5 +22,9 @@ use App\Http\Controllers\Api\PlayerController;
 Route::get('/omzet-daily', [OmzetController::class, 'daily']);
 Route::get('/omzet-monthly', [OmzetController::class, 'monthly']);
 Route::get('/omzet-monthly-zt3', [OmzetController::class, 'monthly_zt3']);
+Route::get('/omzet-monthly-zt2', [OmzetController::class, 'monthly_zt2']);
+Route::get('/omzet-yearly', [OmzetController::class, 'omzet_yearly']);
+Route::get('/omzet-yearly-zt', [OmzetController::class, 'omzet_yearly_zt']);
+Route::get('/omzet-monthly-tot', [OmzetController::class, 'monthly_tot']);
 Route::get('/player-monthly', [PlayerController::class, 'monthly_playertot']);
 
