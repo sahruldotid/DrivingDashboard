@@ -31,13 +31,19 @@
                                  tension: 0.1
                              },
                              {
-                                 label: 'Omzet Total',
-                                 data: parseOmzet(daftarBulananZT1).total,
-                                 fill: false,
-                                 borderColor: 'rgb(75, 192, 192)',
-                                 tension: 0.1
-                             }]
-                         },
+                                label: 'Omzet Total',
+                                data: parseOmzet(daftarBulananZT1).total,
+                                fill: false,
+                                borderColor: 'rgb(75, 192, 192)',
+                                tension: 0.1
+                             }],
+                            options: {
+                            scales: {
+                                y: {
+                                    beginAtZero: true
+                                }
+                            }
+                        }
                      });
                  </script>
              </div>
