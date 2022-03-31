@@ -12,15 +12,22 @@
             @include('partials.left-sidebar')
             @include('partials.top-navbar')
             <div class="right_col" role="main">
-                {{-- <div class="row">
-                    @include('contents.player-in-the-house')
-                </div> --}}
-                @include('contents.omzet-allcat')
-                @include('contents.omzet-harian')
-                @include('contents.omzet-bulanan')
-                @include('contents.player-bulanan-total')
-                @include('contents.omzet-bulanan-zt2')
-                @include('contents.omzet-bulanan-zt3')
+                @include('contents.omzet-ytd')
+                @include('contents.omzet-mtd')
+                @include('contents.omzet-today')
+            </div>
+            @include('contents.omzet-ytd-zt')
+            @include('contents.omzet-mtd-zt')
+            @include('contents.omzet-today-zt')
+            <div>
+            <h3>10 MEMBER TERAKTIF</h3>
+            @include('contents.member-aktif')
+            @include('contents.member-aktif-1')
+            @include('contents.member-aktif-tdy')
+            </div>
+            <div>
+            @include('contents.omzet-bulanan')
+            @include('contents.omzet-bulanan-zt1')
             </div>
             <footer>
                 <div class="pull-right">
