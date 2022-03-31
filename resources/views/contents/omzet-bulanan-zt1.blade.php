@@ -38,9 +38,10 @@
                                 tension: 0.1
                              }],
                             options: {
-                            scales: {
-                                y: {
+                                scales: {
+                                    y: {
                                     beginAtZero: true
+                                    }
                                 }
                             }
                         }

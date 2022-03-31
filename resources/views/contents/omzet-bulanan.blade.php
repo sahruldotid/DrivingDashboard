@@ -11,7 +11,7 @@
                  <canvas id="omzet-bulanan-zt"></canvas>
                  <script>
                     var date = new Date();
-                    var daftarBulananZT = getOmzetMonthly(2010, 10, 29);
+                    var daftarBulananZT = getOmzetMonthly(2010, 1, 29);
                      const ctx = document.getElementById('omzet-bulanan-zt').getContext('2d');
                      const omzet_bulanan_zt = new Chart(ctx, {
                          type: 'line',
@@ -44,7 +44,14 @@
                                  fill: false,
                                  borderColor: 'rgb(255, 0, 0)',
                                  tension: 0.1
-                             }]
+                             }],
+                             options: {
+                                scales: {
+                                    y: {
+                                    beginAtZero: true
+                                    }
+                                }
+                            }
                          },
                      });
                  </script>
