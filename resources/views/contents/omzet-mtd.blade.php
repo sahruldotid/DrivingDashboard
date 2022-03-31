@@ -9,15 +9,13 @@
                 <canvas id="mtd-omzet"></canvas>
                 <script>
                 var date = new Date();
-                var daftarMTDomzet = getOmzetMTD(2010, 10,29);
+                var daftarMTDomzet = getOmzetMTD(date.getFullYear(), date.getMonth() + 1, date.getDate());
                 var xValues = ["Member", "Guest"];
                 var yValues = [parseOmzet(daftarMTDomzet).member, parseOmzet(daftarMTDomzet).guest];
                 var barColors = [
-                "#b91d47",
-                "#00aba9",
-                "#2b5797",
-                "#e8c3b9",
-                "#1e7145"
+                "#FFA500",
+                "#FF4500",
+                "#00C5CD"
                 ];
 
                 new Chart("mtd-omzet", {

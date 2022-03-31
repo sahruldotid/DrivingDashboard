@@ -10,15 +10,13 @@
                 <canvas id="ytd-omzet-zt"></canvas>
                 <script>
                 var date = new Date();
-                var daftarYTDZTomzet = getOmzetYTDZT(2010, 10, 29);
+                var daftarYTDZTomzet = getOmzetYTDZT(date.getFullYear(), date.getMonth() + 1, date.getDate());
                 var xValues = ["ZT I", "ZT II", "ZT III"];
                 var yValues = [parseOmzetZT(daftarYTDZTomzet).zt1, parseOmzetZT(daftarYTDZTomzet).zt2, parseOmzetZT(daftarYTDZTomzet).zt3];
                 var barColors = [
-                "#b91d47",
-                "#00aba9",
-                "#2b5797",
-                "#e8c3b9",
-                "#1e7145"
+                "#FF4500",
+                "#FFA500",
+                "#00C5CD"
                 ];
 
                 new Chart("ytd-omzet-zt", {

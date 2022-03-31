@@ -11,7 +11,7 @@
                  <canvas id="omzet-bulanan-zt"></canvas>
                  <script>
                     var date = new Date();
-                    var daftarBulananZT = getOmzetMonthly(2010, 1, 29);
+                    var daftarBulananZT = getOmzetMonthly(date.getFullYear(), date.getMonth() + 1, date.getDate());
                      const ctx = document.getElementById('omzet-bulanan-zt').getContext('2d');
                      const omzet_bulanan_zt = new Chart(ctx, {
                          type: 'line',
@@ -21,14 +21,14 @@
                                  label: 'Omzet ZT 1',
                                  data: parseOmzetZT(daftarBulananZT).zt1,
                                  fill: false,
-                                 borderColor: 'rgb(39, 149, 39)',
+                                 borderColor: 'blue',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet ZT 2',
                                  data: parseOmzetZT(daftarBulananZT).zt2,
                                  fill: false,
-                                 borderColor: 'blue',
+                                 borderColor: 'green',
                                  tension: 0.1
                              },
                              {
@@ -42,7 +42,7 @@
                                  label: 'Omzet ZT Total',
                                  data: parseOmzetZT(daftarBulananZT).total,
                                  fill: false,
-                                 borderColor: 'rgb(255, 0, 0)',
+                                 borderColor: 'red',
                                  tension: 0.1
                              }],
                              options: {

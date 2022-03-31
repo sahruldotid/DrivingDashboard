@@ -10,15 +10,13 @@
                 <canvas id="tdy-omzet-zt"></canvas>
                 <script>
                 var date = new Date();
-                var daftarTDYZTomzet = getOmzetTodayZT(2010, 10, 29, 22, 23, 05, 10);
+                var daftarTDYZTomzet = getOmzetTodayZT(date.getFullYear(), date.getMonth() + 1, date.getDate(), date.getHours(), date.getMinutes(), date.getSeconds(), date.getMilliseconds());
                 var xValues = ["ZT I", "ZT II", "ZT III"];
                 var yValues = [parseOmzetZT(daftarTDYZTomzet).zt1, parseOmzetZT(daftarTDYZTomzet).zt2, parseOmzetZT(daftarTDYZTomzet).zt3];
                 var barColors = [
-                "#b91d47",
-                "#00aba9",
-                "#2b5797",
-                "#e8c3b9",
-                "#1e7145"
+                "#FF4500",
+                "#FFA500",
+                "#00C5CD"
                 ];
 
                 new Chart("tdy-omzet-zt", {

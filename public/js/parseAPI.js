@@ -246,7 +246,7 @@ function getActiveMember1(year, month, day) {
 }
 
 function getActiveMemberTdy(year, month, day) {
-    var start = new Date(year, month - 2, 1);
+    var start = new Date(year, month - 1, 1);
     var end = new Date(year, month - 1, day);
     act = getJson('active-member', dateToString(start), dateToString(end));
     return act;

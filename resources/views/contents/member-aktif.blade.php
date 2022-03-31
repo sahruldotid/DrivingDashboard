@@ -59,7 +59,7 @@
                 </table>
              <script>
                 var date = new Date();
-                var daftarMemberActive = getActiveMember(2010, 10, 29);
+                var daftarMemberActive = getActiveMember(date.getFullYear(), date.getMonth() + 1, date.getDate());
                 var nama = parseActive(daftarMemberActive).nama;
                 var jumlah = parseActive(daftarMemberActive).jumlah;
                 var x = document.getElementById("myTable");
