@@ -10,7 +10,7 @@
                  <canvas id="omzet-daily"></canvas>
                  <script>
                      var date = new Date();
-                     var daftarHarian = getDailyOmzet(date.getFullYear(), date.getMonth() + 1, date.getDate() + 1);
+                     var daftarHarian = getDailyOmzet(date.getFullYear(), date.getMonth(), date.getDate() + 1);
                      const data = {
                          labels: getArrBeforeToday(date),
                          datasets: [{

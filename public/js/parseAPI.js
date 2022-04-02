@@ -56,7 +56,7 @@ function getMonthName(data) {
 
 
 function getDailyOmzet(year, month, day) {
-    var today = new Date(year, month - 1, day);
+    var today = new Date(year, month , day);
     var priorDate = new Date(today);
     priorDate.setDate(today.getDate() - 30);
     var start = dateToString(priorDate);
