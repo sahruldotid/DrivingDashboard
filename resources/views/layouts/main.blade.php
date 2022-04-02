@@ -12,9 +12,6 @@
             @include('partials.left-sidebar')
             @include('partials.top-navbar')
             <div class="right_col" role="main">
-                {{-- <div class="row">
-                    @include('contents.player-in-the-house')
-                </div> --}}
                 @include('contents.omzet-allcat')
                 @include('contents.omzet-harian')
                 @include('contents.omzet-bulanan')
