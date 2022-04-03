@@ -150,7 +150,7 @@ function parseOmzet(data) {
         omzet.member.push(element.jumlah);
     });
     for (let i=0; i < omzet.guest.length; i++){
-        omzet.total.push(omzet.guest[i] + omzet.member[i]);
+        omzet.total.push(parseInt(omzet.guest[i]) + parseInt(omzet.member[i]));
     }
     return omzet;
 
@@ -170,7 +170,7 @@ function parsePlayer(data) {
         player.member.push(element.playertot);
     });
     for (let i=0; i < player.guest.length; i++){
-        player.total.push(player.guest[i] + player.member[i]);
+        player.total.push(parseInt(player.guest[i]) + parseInt(player.member[i]));
     }
     return player;
 }
@@ -213,9 +213,9 @@ function getOmzetMTD(year, month, day) {
     return mtd;
 }
 
-function getOmzetToday(year, month, day, hours, minutes, seconds, ms) {
-    var start = new Date(year, month - 1, day, 00, 00, 00, 00);
-    var end = new Date(year, month - 1, day, hours, minutes, seconds, ms);
+function getOmzetToday(year, month, day) {
+    var start = new Date(year, month - 1, day);
+    var end = new Date(year, month - 1, day);
     tdy = getJson('today-omzet', dateToString(start), dateToString(end));
     return tdy;
 }
@@ -234,9 +234,9 @@ function getOmzetMTDZT(year, month, day) {
     return mtdzt;
 }
 
-function getOmzetTodayZT(year, month, day, hours, minutes, seconds, ms) {
-    var start = new Date(year, month - 1, day, 00, 00, 00, 00);
-    var end = new Date(year, month - 1, day, hours, minutes, seconds, ms);
+function getOmzetTodayZT(year, month, day) {
+    var start = new Date(year, month - 1, day);
+    var end = new Date(year, month - 1, day);
     tdyzt = getJson('today-omzet-zt', dateToString(start), dateToString(end));
     return tdyzt;
 }

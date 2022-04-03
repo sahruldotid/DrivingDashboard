@@ -2,14 +2,13 @@
      <div class="dashboard_graph">
          <div class="row x_title">
              <div class="col-md-12">
-                 <h3>OMZET MTD</h3>
+                 <h3>Omzet MTD</h3>
              </div>
          </div>
          <div class="col-md-12 col-sm-12 ">
              <canvas id="mtd-omzet"></canvas>
              <script>
-                 var date = new Date();
-                 var daftarMTDomzet = getOmzetMTD(2010, 10, 29);
+                 var daftarMTDomzet = getOmzetMTD(date.getFullYear(), date.getMonth(), date.getDate() + 1);
                  var xValues = ["Member", "Guest"];
                  var yValues = [parseOmzet(daftarMTDomzet).member, parseOmzet(daftarMTDomzet).guest];
                  var barColors = [

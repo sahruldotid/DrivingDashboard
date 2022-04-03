@@ -2,14 +2,13 @@
      <div class="dashboard_graph">
          <div class="row x_title">
              <div class="col-md-12">
-                 <h3>OMZET MTD</h3>
+                 <h3>Omzet ZT MTD</h3>
              </div>
          </div>
          <div class="col-md-12 col-sm-12 ">
              <canvas id="mtd-omzet-zt"></canvas>
              <script>
-                 var date = new Date();
-                 var daftarMTDZTomzet = getOmzetMTDZT(2010, 10, 29);
+                 var daftarMTDZTomzet = getOmzetMTDZT(date.getFullYear(), date.getMonth(), date.getDate() + 1);
                  var xValues = ["ZT I", "ZT II", "ZT III"];
                  var yValues = [parseOmzetZT(daftarMTDZTomzet).zt1, parseOmzetZT(daftarMTDZTomzet).zt2, parseOmzetZT(
                      daftarMTDZTomzet).zt3];

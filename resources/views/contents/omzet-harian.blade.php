@@ -9,7 +9,6 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="omzet-daily"></canvas>
                  <script>
-                     var date = new Date();
                      var daftarHarian = getDailyOmzet(date.getFullYear(), date.getMonth(), date.getDate() + 1);
                      const ctx_harian = document.getElementById('omzet-daily').getContext('2d');
                      const omzet_harian = new Chart(ctx_harian, {

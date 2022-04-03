@@ -3,6 +3,9 @@
 
 <head>
     @include('partials.header')
+    <script>
+        var date = new Date(2010, 9 ,8);
+    </script>
 </head>
 
 <body class="nav-md">
@@ -12,7 +15,7 @@
             @include('partials.top-navbar')
             <div class="right_col" role="main">
 
-                @include('contents.omzet-allcat')
+                {{-- @include('contents.omzet-allcat')
                 <div>
                     @include('contents.omzet-ytd')
                     @include('contents.omzet-mtd')
@@ -28,17 +31,17 @@
                 @include('contents.omzet-harian')
 
 
-                <h3>10 MEMBER TERAKTIF</h3>
+                <h3>10 Member Teraktif</h3>
                 @include('contents.member-aktif')
                 @include('contents.member-aktif-1')
                 @include('contents.member-aktif-tdy')
 
-                @include('contents.omzet-bulanan')
+                @include('contents.omzet-bulanan') --}}
                 @include('contents.player-bulanan-total')
-                @include('contents.omzet-bulanan-zt')
+                {{-- @include('contents.omzet-bulanan-zt')
                 @include('contents.omzet-bulanan-zt1')
                 @include('contents.omzet-bulanan-zt2')
-                @include('contents.omzet-bulanan-zt3')
+                @include('contents.omzet-bulanan-zt3') --}}
             </div>
             <footer>
                 <div class="pull-right">

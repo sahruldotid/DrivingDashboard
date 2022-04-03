@@ -49,7 +49,6 @@
                 });
 
                 //OmzetYTD
-                var date = new Date(2008, 0);
                 var daftarYearlyOmzet = getOmzetYearly(date.getFullYear(), date.getMonth());
                 document.getElementById('outputyearly').innerHTML = rupiahIDR.format(parseTotal(daftarYearlyOmzet));
                 document.getElementById('outputmember').innerHTML = rupiahIDR.format(parseMember(daftarYearlyOmzet));
@@ -86,7 +85,6 @@
                 }
 
                 //Omzet ZT
-                var date = new Date(2008, 0);
                 var daftarYearlyZT = getOmzetYearlyZT(date.getFullYear(), date.getMonth());
                 document.getElementById('outputzt1').innerHTML = rupiahIDR.format(parseZT1(daftarYearlyZT));
                 document.getElementById('outputzt2').innerHTML = rupiahIDR.format(parseZT2(daftarYearlyZT));
@@ -171,7 +169,6 @@
             </div>
             <script>
                 //OmzetMTD
-                var date = new Date(2008, 0);
                 var daftarMonthlyOmzetTot = getOmzetMonthlyTot(date.getFullYear(), date.getMonth());
                 document.getElementById('outputmonthly').innerHTML = rupiahIDR.format(parseTotal(daftarMonthlyOmzetTot));
                 document.getElementById('outputmonthlymember').innerHTML = rupiahIDR.format(parseMember(daftarMonthlyOmzetTot));
@@ -208,7 +205,6 @@
                 }
 
                 //Omzet MTD ZT
-                var date = new Date(2008, 0);
                 var daftarMonthlyZT = getOmzetMonthlyTotZT(date.getFullYear(), date.getMonth());
                 document.getElementById('outputmonthlyzt1').innerHTML = rupiahIDR.format(parseZT1(daftarMonthlyZT));
                 document.getElementById('outputmonthlyzt2').innerHTML = rupiahIDR.format(parseZT2(daftarMonthlyZT));
@@ -292,7 +288,6 @@
             </div>
             <script>
                 //OmzetMTD
-                var date = new Date(2008, 1, 1);
                 var daftarDailyOmzetTot = getOmzetDailyTot(date.getFullYear(), date.getMonth(), date.getDate());
                 document.getElementById('outputdaily').innerHTML = rupiahIDR.format(parseTotal(daftarDailyOmzetTot));
                 document.getElementById('outputdailymember').innerHTML = rupiahIDR.format(parseMember(daftarDailyOmzetTot));
@@ -329,7 +324,6 @@
                 }
 
                 //Omzet MTD ZT
-                var date = new Date(2008, 1, 1);
                 var daftarDailyZT = getOmzetDailyTotZT(date.getFullYear(), date.getMonth(), date.getDate());
                 document.getElementById('outputdailyzt1').innerHTML = rupiahIDR.format(parseZT1(daftarDailyZT));
                 document.getElementById('outputdailyzt2').innerHTML = rupiahIDR.format(parseZT2(daftarDailyZT));
