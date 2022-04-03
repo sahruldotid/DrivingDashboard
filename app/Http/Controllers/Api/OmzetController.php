@@ -180,7 +180,7 @@ class OmzetController extends Controller
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                             inner join master_ma.ware wr on wr.wno=ol.wno
                             inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%member%' AND extract(hour from od.date_ref) IN (16, 20)
+                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%member%' AND (extract(hour from od.date_ref) BETWEEN 16 AND 20)
                             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                             order by tanggal asc
                             ) as a
@@ -194,7 +194,7 @@ class OmzetController extends Controller
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                             inner join master_ma.ware wr on wr.wno=ol.wno
                             inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%guest%' AND extract(hour from od.date_ref) IN (16, 20)
+                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%guest%' AND (extract(hour from od.date_ref) BETWEEN 16 AND 20)
                             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                             order by tanggal asc
                             ) as a
@@ -226,7 +226,7 @@ class OmzetController extends Controller
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                             inner join master_ma.ware wr on wr.wno=ol.wno
                             inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%member%' AND extract(hour from od.date_ref) IN (12, 16)
+                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%member%' AND (extract(hour from od.date_ref) BETWEEN 12 AND 16)
                             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                             order by tanggal asc
                             ) as a
@@ -240,7 +240,7 @@ class OmzetController extends Controller
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                             inner join master_ma.ware wr on wr.wno=ol.wno
                             inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%guest%' AND extract(hour from od.date_ref) IN (12, 16)
+                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%guest%' AND (extract(hour from od.date_ref) BETWEEN 12 AND 16)
                             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                             order by tanggal asc
                             ) as a
@@ -333,7 +333,7 @@ class OmzetController extends Controller
             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
             inner join master_ma.ware wr on wr.wno=ol.wno
             inner join master_ma.deppro dp on wr.dept_code = dp.code
-            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and extract(hour from od.date_ref) IN (5, 12)
+            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' AND (extract(hour from od.date_ref) BETWEEN 5 AND 12)
             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
             order by tanggal asc
             ) as a
@@ -347,7 +347,7 @@ class OmzetController extends Controller
             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
             inner join master_ma.ware wr on wr.wno=ol.wno
             inner join master_ma.deppro dp on wr.dept_code = dp.code
-            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and extract(hour from od.date_ref) IN (12, 16)
+            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' AND (extract(hour from od.date_ref) BETWEEN 12 AND 16)
             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
             order by tanggal asc
             ) as a
@@ -361,7 +361,7 @@ class OmzetController extends Controller
             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
             inner join master_ma.ware wr on wr.wno=ol.wno
             inner join master_ma.deppro dp on wr.dept_code = dp.code
-            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' and extract(hour from od.date_ref) IN (16, 20)
+            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= '$request->startDate' and date(od.date_ref) <= '$request->endDate' and dp.code='420' and ol.wno='03' AND (extract(hour from od.date_ref) BETWEEN 16 AND 20)
             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
             order by tanggal asc
             ) as a
