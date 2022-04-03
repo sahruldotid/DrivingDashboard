@@ -1,4 +1,3 @@
-{{-- // TODO: pecah jadi beberapa bagian navbar, header, body, footer dst dst --}}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,10 +11,32 @@
             @include('partials.left-sidebar')
             @include('partials.top-navbar')
             <div class="right_col" role="main">
+
                 @include('contents.omzet-allcat')
+                <div>
+                    @include('contents.omzet-ytd')
+                    @include('contents.omzet-mtd')
+                    @include('contents.omzet-today')
+                </div>
+                <br>
+
+                @include('contents.omzet-ytd-zt')
+                @include('contents.omzet-mtd-zt')
+                @include('contents.omzet-today-zt')
+
+
                 @include('contents.omzet-harian')
+
+
+                <h3>10 MEMBER TERAKTIF</h3>
+                @include('contents.member-aktif')
+                @include('contents.member-aktif-1')
+                @include('contents.member-aktif-tdy')
+
                 @include('contents.omzet-bulanan')
                 @include('contents.player-bulanan-total')
+                @include('contents.omzet-bulanan-zt')
+                @include('contents.omzet-bulanan-zt1')
                 @include('contents.omzet-bulanan-zt2')
                 @include('contents.omzet-bulanan-zt3')
             </div>
