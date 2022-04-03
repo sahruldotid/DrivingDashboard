@@ -11,44 +11,42 @@
                  <script>
                      var date = new Date();
                      var daftarHarian = getDailyOmzet(date.getFullYear(), date.getMonth(), date.getDate() + 1);
-                     const data = {
-                         labels: getArrBeforeToday(date),
-                         datasets: [{
-                                 label: 'Omzet Member',
-                                 data: parseOmzet(daftarHarian).member,
-                                 fill: false,
-                                 borderColor: 'rgb(39, 149, 39)',
-                                 tension: 0.1
-                             },
-                             {
-                                 label: 'Omzet Guest',
-                                 data: parseOmzet(daftarHarian).guest,
-                                 fill: false,
-                                 borderColor: 'rgb(255, 0, 0)',
-                                 tension: 0.1
-                             },
-                             {
-                                 label: 'Omzet Total',
-                                 data: parseOmzet(daftarHarian).total,
-                                 fill: false,
-                                 borderColor: 'rgb(75, 192, 192)',
-                                 tension: 0.1
-                             }
-                         ]
-                     };
-                     const config = {
+                     const ctx_harian = document.getElementById('omzet-daily').getContext('2d');
+                     const omzet_harian = new Chart(ctx_harian, {
                          type: 'line',
-                         data,
+                         data: {
+                             labels: getArrBeforeToday(date),
+                             datasets: [{
+                                     label: 'Omzet Member',
+                                     data: parseOmzet(daftarHarian).member,
+                                     fill: false,
+                                     borderColor: 'rgb(39, 149, 39)',
+                                     tension: 0.1
+                                 },
+                                 {
+                                     label: 'Omzet Guest',
+                                     data: parseOmzet(daftarHarian).guest,
+                                     fill: false,
+                                     borderColor: 'rgb(255, 0, 0)',
+                                     tension: 0.1
+                                 },
+                                 {
+                                     label: 'Omzet Total',
+                                     data: parseOmzet(daftarHarian).total,
+                                     fill: false,
+                                     borderColor: 'rgb(75, 192, 192)',
+                                     tension: 0.1
+                                 }
+                             ]
+                         },
                          options: {
-                             legend: {
-                                 labels: {
-                                     fontColor: 'white'
+                             scales: {
+                                 y: {
+                                     beginAtZero: true
                                  }
                              }
                          }
-                     };
-                     const context = document.getElementById('omzet-daily');
-                     const omzet_daily = new Chart(context, config);
+                     });
 
                  </script>
              </div>
