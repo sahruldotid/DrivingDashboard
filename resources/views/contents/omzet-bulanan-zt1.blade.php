@@ -38,6 +38,13 @@
                                  tension: 0.1
                              }]
                          },
+                         options: {
+                             scales: {
+                                 y: {
+                                     beginAtZero: true
+                                 }
+                             }
+                         }
                      });
                  </script>
              </div>
