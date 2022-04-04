@@ -74,12 +74,11 @@ class OmzetController extends Controller
         return $array;
     }
 
-    function validateRequest(Request $request){
-        $this->validateRequest($request);
-    }
-
     function omzet_daily(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
         $query = "select date(od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as jumlah
                 from golf_fnb.order_list ol
                 left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
@@ -100,7 +99,10 @@ class OmzetController extends Controller
 
     // omzet bulanan
     function omzet_monthly(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -144,7 +146,10 @@ class OmzetController extends Controller
 
     // omzet bulanan ZT3
     function omzet_monthly_zt3(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -187,7 +192,10 @@ class OmzetController extends Controller
 
     // omzet bulanan ZT2
     function omzet_monthly_zt2(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -231,7 +239,10 @@ class OmzetController extends Controller
 
     // omzet tahunan
     function omzet_yearly(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select to_char(a.tanggal, 'YYYY') as tanggal, round(sum(a.amount)) as jumlah from (
             select date_trunc('year', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -288,7 +299,10 @@ class OmzetController extends Controller
     }
 
     function omzet_yearly_zt(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $zt1 = DB::select("select to_char(a.tanggal, 'YYYY') as tanggal, round(sum(a.amount)) as jumlah from (
             select date_trunc('year', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -409,7 +423,10 @@ class OmzetController extends Controller
         }
 
         function ytd_omzet(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select to_char(a.tanggal, 'YYYY') as tanggal, sum(a.amount) as jumlah from (
                         select date_trunc('year', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -467,7 +484,10 @@ class OmzetController extends Controller
 
     // omzet mtd
     function mtd_omzet(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                         select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -525,7 +545,10 @@ class OmzetController extends Controller
 
     //omzet tdy
     function tdy_omzet(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
                         select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -577,7 +600,10 @@ class OmzetController extends Controller
     }
 
     function ytd_omzet_zt(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $zt1 = DB::select("select to_char(a.tanggal, 'YYYY') as tanggal, sum(a.amount) as jumlah from (
                         select date_trunc('year', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -652,7 +678,10 @@ class OmzetController extends Controller
 
     //omzet mtd zt
     function mtd_omzet_zt(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $zt1 = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                         select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -727,7 +756,10 @@ class OmzetController extends Controller
 
     //omzet today zt
     function tdy_omzet_zt(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $zt1 = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
                         select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -796,7 +828,10 @@ class OmzetController extends Controller
 
     // omzet bulanan zt
     function monthly_zt(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $zt1 = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                         select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -871,7 +906,10 @@ class OmzetController extends Controller
 
     // omzet bulanan ZT1
     function monthly_zt1(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
@@ -930,7 +968,10 @@ class OmzetController extends Controller
 
     // member aktif
     function active_member(Request $request){
-        $this->validateRequest($request);
+       $this->validate($request, [
+            'startDate'  =>  'required|date',
+            'endDate'    =>  'required|date|after_or_equal:start_date'
+        ]);
 
         $member = DB::select("select a.nama, count(a.amount) as jumlah from (
                             select od.name_customer as nama, count(coalesce(ol.dpp_orderlist,0)) as amount
