@@ -389,7 +389,7 @@ class OmzetController extends Controller
             ]);
 
             $member = DB::select("select to_char(a.tanggal, 'YYYY') as tanggal, sum(a.amount) as jumlah from (
-                                select date_trunc('year', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
+                                select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                                 from golf_fnb.order_list ol
                                 left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                                 inner join master_ma.ware wr on wr.wno=ol.wno
@@ -403,7 +403,7 @@ class OmzetController extends Controller
                                 order by a.tanggal asc");
 
             $guest = DB::select("select to_char(a.tanggal, 'YYYY') as tanggal, sum(a.amount) as jumlah from (
-                                select date_trunc('year', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
+                                select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                                 from golf_fnb.order_list ol
                                 left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                                 inner join master_ma.ware wr on wr.wno=ol.wno
@@ -418,7 +418,7 @@ class OmzetController extends Controller
 
 
             $total = DB::select("select to_char(a.tanggal, 'YYYY') as tanggal, sum(a.amount) as jumlah from (
-                                select date_trunc('year', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
+                                select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                                 from golf_fnb.order_list ol
                                 left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                                 inner join master_ma.ware wr on wr.wno=ol.wno

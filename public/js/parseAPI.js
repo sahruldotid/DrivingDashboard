@@ -49,6 +49,9 @@ function getShortDay(date) {
 // create function that return month name by given date in string format yyyy-mm-dd
 function getMonthName(data) {
     var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nop', 'Des'];
+    if (data.guest){
+        return monthArr.slice(0, data.guest.length);
+    }
     return monthArr.slice(0, data.total.length);
 }
 
@@ -69,44 +72,44 @@ function getOmzetMonthly(year, month, day) {
     return monthly;
 }
 
-function getOmzetYearly(year, month){
-    var start = new Date(year, month);
-    var end = new Date(year, month + 12);
+function getOmzetYearly(year, month, day){
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month, day);
     yearly = getJson('omzet-yearly', dateToString(start), dateToString(end));
     return yearly;
 }
 
-function getOmzetYearlyZT(year, month){
-    var start = new Date(year, month);
-    var end = new Date(year, month + 12);
+function getOmzetYearlyZT(year, month, day){
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month, day);
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }
 
-function getOmzetMonthlyTot(year, month){
-    var start = new Date(year, month);
-    var end = new Date(year, month + 1);
+function getOmzetMonthlyTot(year, month, day){
+    var start = new Date(year, month, 1);
+    var end = new Date(year, month, day);
     yearly = getJson('omzet-yearly', dateToString(start), dateToString(end));
     return yearly;
 }
 
-function getOmzetMonthlyTotZT(year, month){
-    var start = new Date(year, month);
-    var end = new Date(year, month + 1);
+function getOmzetMonthlyTotZT(year, month, day){
+    var start = new Date(year, month, 1);
+    var end = new Date(year, month, day);
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }
 
 function getOmzetDailyTot(year, month, day){
-    var start = new Date(year, month, day);
-    var end = new Date(year, month, day + 1);
+    var start = new Date(year, month, day - 1);
+    var end = new Date(year, month, day);
     yearly = getJson('omzet-yearly', dateToString(start), dateToString(end));
     return yearly;
 }
 
 function getOmzetDailyTotZT(year, month, day){
-    var start = new Date(year, month, day);
-    var end = new Date(year, month, day + 1);A
+    var start = new Date(year, month, day - 1);
+    var end = new Date(year, month, day);
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }
