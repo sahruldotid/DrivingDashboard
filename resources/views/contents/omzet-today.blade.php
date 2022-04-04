@@ -8,7 +8,7 @@
         <div class="col-md-12 col-sm-12 ">
             <canvas id="tdy-omzet"></canvas>
             <script>
-                var daftarTdyomzet = getOmzetToday(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+                var daftarTdyomzet = getOmzetToday(date.getFullYear(), date.getMonth(), date.getDate());
                 var xValues = ["Member", "Guest"];
                 var yValues = [parseOmzet(daftarTdyomzet).member, parseOmzet(daftarTdyomzet).guest];
                 var barColors = [

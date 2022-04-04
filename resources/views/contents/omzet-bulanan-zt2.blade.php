@@ -9,7 +9,7 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="omzet-bulanan-zt2"></canvas>
                  <script>
-                    var daftarBulananZT2 = getOmzetMonthlyZT2(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+                    var daftarBulananZT2 = getOmzetMonthlyZT2(date.getFullYear(), date.getMonth(), date.getDate());
                      const ctx_zt2 = document.getElementById('omzet-bulanan-zt2').getContext('2d');
                      const omzet_bulanan_zt2 = new Chart(ctx_zt2, {
                          type: 'line',

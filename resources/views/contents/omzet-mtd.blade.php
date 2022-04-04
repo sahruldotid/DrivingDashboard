@@ -8,7 +8,7 @@
          <div class="col-md-12 col-sm-12 ">
              <canvas id="mtd-omzet"></canvas>
              <script>
-                 var daftarMTDomzet = getOmzetMTD(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+                 var daftarMTDomzet = getOmzetMTD(date.getFullYear(), date.getMonth(), date.getDate());
                  var xValues = ["Member", "Guest"];
                  var yValues = [parseOmzet(daftarMTDomzet).member, parseOmzet(daftarMTDomzet).guest];
                  var barColors = [
