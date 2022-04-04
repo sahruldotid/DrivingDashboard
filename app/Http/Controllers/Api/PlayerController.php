@@ -49,42 +49,58 @@ class PlayerController extends Controller{
             'endDate'    =>  'required|date|after_or_equal:start_date'
         ]);
         
-        $member = DB::select("select a.tanggal, SUM(a.amount) as playertot from (
-            select date_trunc('month', ol.log_ts_ins) as tanggal, count(coalesce(ol.dpp_orderlist,0)) as amount 
+        $member = DB::select("select to_char(a.tanggal, 'YYYY-mm') as tanggal, count(a.nama) as playertot from (
+            select date_trunc('month', ol.log_ts_ins) as tanggal, od.name_customer as nama
             from golf_fnb.order_list ol
-	        left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
+            left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
             inner join master_ma.ware wr on wr.wno=ol.wno
             inner join master_ma.deppro dp on wr.dept_code = dp.code
-            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(ol.log_ts_ins) >= '2008-01-01' and date(ol.log_ts_ins) <= '2008-02-01' and dp.code='420' and ol.wno='03' and ol.name LIKE '%Member%' 
-            group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,'')
+            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(ol.log_ts_ins) >= '$request->startDate' and date(ol.log_ts_ins) <= '$request->endDate' and dp.code='420' and ol.wno='03' and ol.name LIKE '%Member%'
+            group by ol.code_item, tanggal, nama, ol.name, ol.wno, coalesce(ol.unit_code,'')
             order by tanggal asc
             ) as a
 
             group by a.tanggal
-            order by SUM(a.amount)");
+            order by a.tanggal");
 
-        $guest = DB::select("select a.tanggal, SUM(a.amount) as playertot from (
-            select date_trunc('month', ol.log_ts_ins) as tanggal, count(coalesce(ol.dpp_orderlist,0)) as amount 
+        $guest = DB::select("select to_char(a.tanggal, 'YYYY-mm') as tanggal, count(a.nama) as playertot from (
+            select date_trunc('month', ol.log_ts_ins) as tanggal, od.name_customer as nama
             from golf_fnb.order_list ol
-	        left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
+            left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
             inner join master_ma.ware wr on wr.wno=ol.wno
             inner join master_ma.deppro dp on wr.dept_code = dp.code
-            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(ol.log_ts_ins) >= '2008-01-01' and date(ol.log_ts_ins) <= '2008-02-01' and dp.code='420' and ol.wno='03' and ol.name LIKE '%Guest%' 
-            group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,'')
+            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(ol.log_ts_ins) >= '$request->startDate' and date(ol.log_ts_ins) <= '$request->endDate' and dp.code='420' and ol.wno='03' and ol.name LIKE '%Guest' 
+            group by ol.code_item, tanggal, nama, ol.name, ol.wno, coalesce(ol.unit_code,'')
             order by tanggal asc
             ) as a
 
             group by a.tanggal
-            order by SUM(a.amount)");
+            order by a.tanggal");
+
+        $total = DB::select("select to_char(a.tanggal, 'YYYY-mm') as tanggal, count(a.nama) as playertot from (
+            select date_trunc('month', ol.log_ts_ins) as tanggal, od.name_customer as nama
+            from golf_fnb.order_list ol
+            left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
+            inner join master_ma.ware wr on wr.wno=ol.wno
+            inner join master_ma.deppro dp on wr.dept_code = dp.code
+            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(ol.log_ts_ins) >= '$request->startDate' and date(ol.log_ts_ins) <= '$request->endDate' and dp.code='420' and ol.wno='03' and (ol.name LIKE '%Member%' or ol.name LIKE '%Guest') 
+            group by ol.code_item, tanggal, nama, ol.name, ol.wno, coalesce(ol.unit_code,'')
+            order by tanggal asc
+            ) as a
+
+            group by a.tanggal
+            order by a.tanggal");
 
         $period = $this->getMonthPeriod($request->startDate, $request->endDate);
         $member = $this->formatPlayer($period, json_decode(json_encode($member), true));
         $guest = $this->formatPlayer($period, json_decode(json_encode($guest), true));
-
-
+        $total = $this->formatPlayer($period, json_decode(json_encode($total), true));
+    
+    
         return response()->json([
             'member' => $member,
             'guest' => $guest,
-        ], 200, [], JSON_PRETTY_PRINT);        
+            'total' => $total,
+        ], 200, [], JSON_PRETTY_PRINT);     
     }
 }

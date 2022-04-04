@@ -52,11 +52,8 @@ function getMonthName(data) {
     return monthArr.slice(0, data.total.length);
 }
 
-
-
-
 function getDailyOmzet(year, month, day) {
-    var today = new Date(year, month - 1, day);
+    var today = new Date(year, month , day);
     var priorDate = new Date(today);
     priorDate.setDate(today.getDate() - 30);
     var start = dateToString(priorDate);
@@ -67,7 +64,7 @@ function getDailyOmzet(year, month, day) {
 
 function getOmzetMonthly(year, month, day) {
     var start = new Date(year, 0, 1);
-    var end = new Date(year, month - 1, day);
+    var end = new Date(year, month, day);
     monthly = getJson('omzet-monthly', dateToString(start), dateToString(end));
     return monthly;
 }
@@ -109,7 +106,7 @@ function getOmzetDailyTot(year, month, day){
 
 function getOmzetDailyTotZT(year, month, day){
     var start = new Date(year, month, day);
-    var end = new Date(year, month, day + 1);
+    var end = new Date(year, month, day + 1);A
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }
@@ -121,22 +118,96 @@ function getPlayerMonthly(year, month, day) {
     return monthly;
 }
 
-
-
 function getOmzetMonthlyZT3(year, month, day) {
     var start = new Date(year, 0, 1);
-    var end = new Date(year, month - 1, day);
+    var end = new Date(year, month, day);
     monthly = getJson('omzet-monthly-zt3', dateToString(start), dateToString(end));
     return monthly;
 }
 
-function getOmzetMonthlyZT2(year, month) {
-    var start = new Date(year, month);
-    var end = new Date(year, month + 12);
+function getOmzetMonthlyZT2(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month, day);
     monthly = getJson('omzet-monthly-zt2', dateToString(start), dateToString(end));
     return monthly;
 }
 
+function getOmzetYTD(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month - 1, day);
+    ytd = getJson('ytd-omzet', dateToString(start), dateToString(end));
+    return ytd;
+}
+
+function getOmzetMTD(year, month, day) {
+    var start = new Date(year, month - 1, 1);
+    var end = new Date(year, month - 1, day);
+    mtd = getJson('mtd-omzet', dateToString(start), dateToString(end));
+    return mtd;
+}
+
+function getOmzetToday(year, month, day) {
+    var start = new Date(year, month - 1, day);
+    var end = new Date(year, month - 1, day);
+    tdy = getJson('today-omzet', dateToString(start), dateToString(end));
+    return tdy;
+}
+
+function getOmzetYTDZT(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month - 1, day);
+    ytdzt = getJson('ytd-omzet-zt', dateToString(start), dateToString(end));
+    return ytdzt;
+}
+
+function getOmzetMTDZT(year, month, day) {
+    var start = new Date(year, month - 1, 1);
+    var end = new Date(year, month - 1, day);
+    mtdzt = getJson('mtd-omzet-zt', dateToString(start), dateToString(end));
+    return mtdzt;
+}
+
+function getOmzetTodayZT(year, month, day) {
+    var start = new Date(year, month - 1, day);
+    var end = new Date(year, month - 1, day);
+    tdyzt = getJson('today-omzet-zt', dateToString(start), dateToString(end));
+    return tdyzt;
+}
+
+function getOmzetMonthlyZT(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month - 1, day);
+    monthlyzt = getJson('omzet-monthly-zt', dateToString(start), dateToString(end));
+    return monthlyzt;
+}
+
+function getOmzetMonthlyZT1(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month - 1, day);
+    monthly = getJson('omzet-monthly-zt1', dateToString(start), dateToString(end));
+    return monthly;
+}
+
+function getActiveMember(year, month, day) {
+    var start = new Date(year, month - 3, day);
+    var end = new Date(year, month - 1, day);
+    act = getJson('active-member', dateToString(start), dateToString(end));
+    return act;
+}
+
+function getActiveMember1(year, month, day) {
+    var start = new Date(year, month - 2, day);
+    var end = new Date(year, month - 1, day);
+    act = getJson('active-member', dateToString(start), dateToString(end));
+    return act;
+}
+
+function getActiveMemberTdy(year, month, day) {
+    var start = new Date(year, month - 2, 1);
+    var end = new Date(year, month - 1, day);
+    act = getJson('active-member', dateToString(start), dateToString(end));
+    return act;
+}
 
 function parseOmzet(data) {
     var omzet = {
@@ -151,9 +222,9 @@ function parseOmzet(data) {
     data.member.forEach(element => {
         omzet.member.push(element.jumlah);
     });
-    data.total.forEach(element => {
-        omzet.total.push(element.jumlah);
-    });
+    for (let i=0; i < omzet.guest.length; i++){
+        omzet.total.push(parseInt(omzet.guest[i]) + parseInt(omzet.member[i]));
+    }
     return omzet;
 
 }
@@ -171,11 +242,48 @@ function parsePlayer(data) {
     data.member.forEach(element => {
         player.member.push(element.playertot);
     });
+
     data.total.forEach(element => {
         player.total.push(element.playertot);
     });
 
     return player;
-
 }
 
+
+function parseOmzetZT(data) {
+    var omzetZT = {
+        "zt1": [],
+        "zt2": [],
+        "zt3": [],
+        "total": [],
+
+    };
+    data.zt1.forEach(element => {
+        omzetZT.zt1.push(element.jumlah);
+    });
+    data.zt2.forEach(element => {
+        omzetZT.zt2.push(element.jumlah);
+    });
+    data.zt3.forEach(element => {
+        omzetZT.zt3.push(element.jumlah);
+    });
+    data.total.forEach(element => {
+        omzetZT.total.push(element.jumlah);
+    });
+    return omzetZT;
+}
+
+function parseActive(data) {
+    var active = {
+        "nama": [],
+        "jumlah": []
+    };
+    data.member.forEach(element => {
+        active.nama.push(element.nama);
+    });
+    data.member.forEach(element => {
+        active.jumlah.push(element.jumlah);
+    });
+    return active;
+}
