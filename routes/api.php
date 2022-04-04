@@ -25,6 +25,8 @@ Route::get('/omzet-monthly-zt2', [OmzetController::class, 'omzet_monthly_zt2']);
 Route::get('/omzet-monthly-zt3', [OmzetController::class, 'omzet_monthly_zt3']);
 Route::get('/omzet-yearly', [OmzetController::class, 'omzet_yearly']);
 Route::get('/omzet-yearly-zt', [OmzetController::class, 'omzet_yearly_zt']);
+Route::get('/omzet-daily-tot', [OmzetController::class, 'omzet_daily_tot']);
+Route::get('/omzet-daily-zt', [OmzetController::class, 'omzet_daily_zt']);
 Route::get('/player-monthly', [PlayerController::class, 'monthly_playertot']);
 
 
