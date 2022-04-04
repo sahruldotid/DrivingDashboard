@@ -9,8 +9,8 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="player-bulanan"></canvas>
                  <script>
-                     var date = new Date(2008, 0);
-                     var daftarPlayerBulanan = getPlayerMonthly(date.getFullYear(), date.getMonth());
+                     var date = new Date(2008, 11, 31);
+                     var daftarPlayerBulanan = getPlayerMonthly(date.getFullYear(), date.getMonth(), date.getDate());
                      const ctx_player = document.getElementById('player-bulanan').getContext('2d');
                      const player_bulanan = new Chart(ctx_player, {
                          type: 'line',

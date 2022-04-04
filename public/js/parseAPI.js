@@ -49,7 +49,7 @@ function getShortDay(date) {
 // create function that return month name by given date in string format yyyy-mm-dd
 function getMonthName(data) {
     var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nop', 'Des'];
-    return monthArr.slice(0, data.length);
+    return monthArr.slice(0, data.total.length);
 }
 
 
@@ -114,9 +114,9 @@ function getOmzetDailyTotZT(year, month, day){
     return yearly;
 }
 
-function getPlayerMonthly(year, month) {
-    var start = new Date(year, month);
-    var end = new Date(year, month + 12);
+function getPlayerMonthly(year, month, day) {
+    var start = new Date(year, 0, 1);
+    var end = new Date(year, month, day);
     monthly = getJson('player-monthly', dateToString(start), dateToString(end));
     return monthly;
 }
@@ -171,9 +171,9 @@ function parsePlayer(data) {
     data.member.forEach(element => {
         player.member.push(element.playertot);
     });
-    for (let i=0; i < player.guest.length; i++){
-        player.total.push(player.guest[i] + player.member[i]);
-    }
+    data.total.forEach(element => {
+        player.total.push(element.playertot);
+    });
 
     return player;
 
