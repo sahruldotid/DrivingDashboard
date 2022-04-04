@@ -109,7 +109,7 @@ function getOmzetDailyTot(year, month, day){
 
 function getOmzetDailyTotZT(year, month, day){
     var start = new Date(year, month, day);
-    var end = new Date(year, month, day + 1);
+    var end = new Date(year, month, day + 1);A
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }
@@ -133,70 +133,6 @@ function getOmzetMonthlyZT2(year, month, day) {
     var end = new Date(year, month, day);
     monthly = getJson('omzet-monthly-zt2', dateToString(start), dateToString(end));
     return monthly;
-}
-
-
-function parseOmzet(data) {
-    var omzet = {
-        "guest": [],
-        "member": [],
-        "total": [],
-
-    };
-    data.guest.forEach(element => {
-        omzet.guest.push(element.jumlah);
-    });
-    data.member.forEach(element => {
-        omzet.member.push(element.jumlah);
-    });
-    for (let i=0; i < omzet.guest.length; i++){
-        omzet.total.push(parseInt(omzet.guest[i]) + parseInt(omzet.member[i]));
-    }
-    return omzet;
-
-}
-
-function parsePlayer(data) {
-    var player = {
-        "guest": [],
-        "member": [],
-        "total": [],
-
-    };
-    data.guest.forEach(element => {
-        player.guest.push(element.playertot);
-    });
-    data.member.forEach(element => {
-        player.member.push(element.playertot);
-    });
-    for (let i=0; i < player.guest.length; i++){
-        player.total.push(parseInt(player.guest[i]) + parseInt(player.member[i]));
-    }
-    return player;
-}
-
-
-function parseOmzetZT(data) {
-    var omzetZT = {
-        "zt1": [],
-        "zt2": [],
-        "zt3": [],
-        "total": [],
-
-    };
-    data.zt1.forEach(element => {
-        omzetZT.zt1.push(element.jumlah);
-    });
-    data.zt2.forEach(element => {
-        omzetZT.zt2.push(element.jumlah);
-    });
-    data.zt3.forEach(element => {
-        omzetZT.zt3.push(element.jumlah);
-    });
-    data.total.forEach(element => {
-        omzetZT.total.push(element.jumlah);
-    });
-    return omzetZT;
 }
 
 function getOmzetYTD(year, month, day) {
@@ -274,6 +210,69 @@ function getActiveMemberTdy(year, month, day) {
     var end = new Date(year, month - 1, day);
     act = getJson('active-member', dateToString(start), dateToString(end));
     return act;
+}
+
+function parseOmzet(data) {
+    var omzet = {
+        "guest": [],
+        "member": [],
+        "total": [],
+
+    };
+    data.guest.forEach(element => {
+        omzet.guest.push(element.jumlah);
+    });
+    data.member.forEach(element => {
+        omzet.member.push(element.jumlah);
+    });
+    for (let i=0; i < omzet.guest.length; i++){
+        omzet.total.push(parseInt(omzet.guest[i]) + parseInt(omzet.member[i]));
+    }
+    return omzet;
+
+}
+
+function parsePlayer(data) {
+    var player = {
+        "guest": [],
+        "member": [],
+        "total": [],
+
+    };
+    data.guest.forEach(element => {
+        player.guest.push(element.playertot);
+    });
+    data.member.forEach(element => {
+        player.member.push(element.playertot);
+    });
+    for (let i=0; i < player.guest.length; i++){
+        player.total.push(parseInt(player.guest[i]) + parseInt(player.member[i]));
+    }
+    return player;
+}
+
+
+function parseOmzetZT(data) {
+    var omzetZT = {
+        "zt1": [],
+        "zt2": [],
+        "zt3": [],
+        "total": [],
+
+    };
+    data.zt1.forEach(element => {
+        omzetZT.zt1.push(element.jumlah);
+    });
+    data.zt2.forEach(element => {
+        omzetZT.zt2.push(element.jumlah);
+    });
+    data.zt3.forEach(element => {
+        omzetZT.zt3.push(element.jumlah);
+    });
+    data.total.forEach(element => {
+        omzetZT.total.push(element.jumlah);
+    });
+    return omzetZT;
 }
 
 function parseActive(data) {
