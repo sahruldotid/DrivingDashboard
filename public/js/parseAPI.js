@@ -67,7 +67,8 @@ function getDailyOmzet(year, month, day) {
 
 function getOmzetMonthly(year, month, day) {
     var start = new Date(year, 0, 1);
-    var end = new Date(year, month, day);
+    var end = new Date(year, month - 1, day);
+    alert(dateToString(start) +" "+ dateToString(end))
     monthly = getJson('omzet-monthly', dateToString(start), dateToString(end));
     return monthly;
 }
@@ -109,7 +110,7 @@ function getOmzetDailyTot(year, month, day){
 
 function getOmzetDailyTotZT(year, month, day){
     var start = new Date(year, month, day);
-    var end = new Date(year, month, day + 1);A
+    var end = new Date(year, month, day + 1);
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }

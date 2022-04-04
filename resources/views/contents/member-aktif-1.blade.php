@@ -57,7 +57,7 @@
                     </tbody>
                 </table>
              <script>
-                var daftarMemberActive1 = getActiveMember1(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+                var daftarMemberActive1 = getActiveMember1(date.getFullYear(), date.getMonth(), date.getDate());
                 var nama = parseActive(daftarMemberActive1).nama;
                 var jumlah = parseActive(daftarMemberActive1).jumlah;
                 var x = document.getElementById("myTable1");

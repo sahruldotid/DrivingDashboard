@@ -4,7 +4,7 @@
 <head>
     @include('partials.header')
     <script>
-        var date = new Date();
+        var date = new Date(2008, 2, 28);
     </script>
 </head>
 
@@ -14,7 +14,7 @@
             @include('partials.left-sidebar')
             @include('partials.top-navbar')
             <div class="right_col" role="main">
-
+{{--
                 @include('contents.omzet-allcat')
                 <div>
                     @include('contents.omzet-ytd')
@@ -25,12 +25,12 @@
 
                 @include('contents.omzet-ytd-zt')
             @include('contents.omzet-mtd-zt')
-                @include('contents.omzet-today-zt')
+                @include('contents.omzet-today-zt') --}}
 
 
                 @include('contents.omzet-harian')
 
-
+{{--
                 <h3>10 Member Teraktif</h3>
                 @include('contents.member-aktif')
                 @include('contents.member-aktif-1')
@@ -41,7 +41,7 @@
                 @include('contents.omzet-bulanan-zt')
                 @include('contents.omzet-bulanan-zt1')
                 @include('contents.omzet-bulanan-zt2')
-                @include('contents.omzet-bulanan-zt3')
+                @include('contents.omzet-bulanan-zt3') --}}
             </div>
             <footer>
                 <div class="pull-right">

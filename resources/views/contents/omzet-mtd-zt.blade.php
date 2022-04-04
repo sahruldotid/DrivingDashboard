@@ -8,7 +8,7 @@
          <div class="col-md-12 col-sm-12 ">
              <canvas id="mtd-omzet-zt"></canvas>
              <script>
-                 var daftarMTDZTomzet = getOmzetMTDZT(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+                 var daftarMTDZTomzet = getOmzetMTDZT(date.getFullYear(), date.getMonth(), date.getDate());
                  var xValues = ["ZT I", "ZT II", "ZT III"];
                  var yValues = [parseOmzetZT(daftarMTDZTomzet).zt1, parseOmzetZT(daftarMTDZTomzet).zt2, parseOmzetZT(
                      daftarMTDZTomzet).zt3];

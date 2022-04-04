@@ -9,7 +9,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <canvas id="ytd-omzet"></canvas>
                 <script>
-                    var daftarYTDomzet = getOmzetYTD(date.getFullYear(), date.getMonth(), date.getDate() + 1);
+                    var daftarYTDomzet = getOmzetYTD(date.getFullYear(), date.getMonth(), date.getDate());
                     var xValues = ["Member", "Guest"];
                     var yValues = [parseOmzet(daftarYTDomzet).member, parseOmzet(daftarYTDomzet).guest];
                     var barColors = [
