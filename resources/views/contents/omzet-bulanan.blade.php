@@ -9,10 +9,9 @@
              <div class="col-md-12 col-sm-12 ">
                  <canvas id="omzet-bulanan"></canvas>
                  <script>
-                     var date = new Date();
-                     var daftarBulanan = getOmzetMonthly(date.getFullYear(), date.getMonth() + 1, date.getDate());
-                     const ctx = document.getElementById('omzet-bulanan').getContext('2d');
-                     const omzet_bulanan = new Chart(ctx, {
+                     var daftarBulanan = getOmzetMonthly(date.getFullYear(), date.getMonth(), date.getDate());
+                     const ctx_bulanan = document.getElementById('omzet-bulanan').getContext('2d');
+                     const omzet_bulanan = new Chart(ctx_bulanan, {
                          type: 'line',
                          data: {
                              labels: getMonthName(daftarBulanan),
@@ -38,6 +37,13 @@
                                  tension: 0.1
                              }]
                          },
+                         options: {
+                             scales: {
+                                 y: {
+                                     beginAtZero: true
+                                 }
+                             }
+                         }
                      });
                  </script>
              </div>
