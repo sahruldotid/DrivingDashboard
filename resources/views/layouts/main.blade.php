@@ -4,7 +4,7 @@
 <head>
     @include('partials.header')
     <script>
-        var date = new Date(2009, 4, 11);
+        var date = new Date();
     </script>
 </head>
 
