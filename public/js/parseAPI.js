@@ -25,7 +25,9 @@ function getArrBeforeToday(today) {
     var day = today.getDate();
     for (var i = 30 - 1; i >= 0; i--) {
         var date = new Date(year, month - 1, day - i);
-        var strWeekday = date.toLocaleString('en-us', { weekday: 'short' });
+        var strWeekday = date.toLocaleString('en-us', {
+            weekday: 'short'
+        });
         var numDay = date.getDate();
         arr.push([numDay, strWeekday]);
     }
@@ -49,14 +51,14 @@ function getShortDay(date) {
 // create function that return month name by given date in string format yyyy-mm-dd
 function getMonthName(data) {
     var monthArr = ['Jan', 'Feb', 'Mar', 'Apr', 'Mei', 'Jun', 'Jul', 'Ags', 'Sep', 'Okt', 'Nop', 'Des'];
-    if (data.guest){
+    if (data.guest) {
         return monthArr.slice(0, data.guest.length);
     }
     return monthArr.slice(0, data.total.length);
 }
 
 function getDailyOmzet(year, month, day) {
-    var today = new Date(year, month , day);
+    var today = new Date(year, month, day);
     var priorDate = new Date(today);
     priorDate.setDate(today.getDate() - 30);
     var start = dateToString(priorDate);
@@ -72,50 +74,47 @@ function getOmzetMonthly(year, month, day) {
     return monthly;
 }
 
-function getOmzetYearly(year, month, today){
+function getOmzetYearly(year, month, today) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, today);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     yearly = getJson('omzet-yearly', dateToString(start), dateToString(end));
     return yearly;
 }
 
-function getOmzetYearlyZT(year, month, today){
+function getOmzetYearlyZT(year, month, today) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, today);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }
 
-function getOmzetMonthlyTot(year, month, today){
+function getOmzetMonthlyTot(year, month, today) {
     var start = new Date(year, month - 1, 1);
     var end = new Date(year, month - 1, today);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     yearly = getJson('omzet-yearly', dateToString(start), dateToString(end));
     return yearly;
 }
 
-function getOmzetMonthlyTotZT(year, month, today){
+function getOmzetMonthlyTotZT(year, month, today) {
     var start = new Date(year, month - 1, 1);
     var end = new Date(year, month - 1, today);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
+
     yearly = getJson('omzet-yearly-zt', dateToString(start), dateToString(end));
     return yearly;
 }
 
-function getOmzetDailyTot(year, month, day){
+function getOmzetDailyTot(year, month, day) {
     var start = new Date(year, month - 1, day);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
+
     daily_tot = getJson('omzet-daily-tot', dateToString(start), dateToString(end));
     return daily_tot;
 }
 
-function getOmzetDailyTotZT(year, month, day){
+function getOmzetDailyTotZT(year, month, day) {
     var start = new Date(year, month - 1, day);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
+
     daily_zt = getJson('omzet-daily-zt', dateToString(start), dateToString(end));
     return daily_zt;
 }
@@ -123,7 +122,6 @@ function getOmzetDailyTotZT(year, month, day){
 function getPlayerMonthly(year, month, day) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     monthly = getJson('player-monthly', dateToString(start), dateToString(end));
     return monthly;
 }
@@ -131,7 +129,6 @@ function getPlayerMonthly(year, month, day) {
 function getOmzetMonthlyZT3(year, month, day) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     monthly = getJson('omzet-monthly-zt3', dateToString(start), dateToString(end));
     return monthly;
 }
@@ -139,7 +136,6 @@ function getOmzetMonthlyZT3(year, month, day) {
 function getOmzetMonthlyZT2(year, month, day) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     monthly = getJson('omzet-monthly-zt2', dateToString(start), dateToString(end));
     return monthly;
 }
@@ -147,7 +143,6 @@ function getOmzetMonthlyZT2(year, month, day) {
 function getOmzetYTD(year, month, day) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     ytd = getJson('ytd-omzet', dateToString(start), dateToString(end));
     return ytd;
 }
@@ -155,7 +150,6 @@ function getOmzetYTD(year, month, day) {
 function getOmzetMTD(year, month, day) {
     var start = new Date(year, month - 1, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     mtd = getJson('mtd-omzet', dateToString(start), dateToString(end));
     return mtd;
 }
@@ -163,7 +157,6 @@ function getOmzetMTD(year, month, day) {
 function getOmzetToday(year, month, day) {
     var start = new Date(year, month - 1, day);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     tdy = getJson('today-omzet', dateToString(start), dateToString(end));
     return tdy;
 }
@@ -171,7 +164,6 @@ function getOmzetToday(year, month, day) {
 function getOmzetYTDZT(year, month, day) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     ytdzt = getJson('ytd-omzet-zt', dateToString(start), dateToString(end));
     return ytdzt;
 }
@@ -179,7 +171,6 @@ function getOmzetYTDZT(year, month, day) {
 function getOmzetMTDZT(year, month, day) {
     var start = new Date(year, month - 1, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     mtdzt = getJson('mtd-omzet-zt', dateToString(start), dateToString(end));
     return mtdzt;
 }
@@ -187,7 +178,6 @@ function getOmzetMTDZT(year, month, day) {
 function getOmzetTodayZT(year, month, day) {
     var start = new Date(year, month - 1, day);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     tdyzt = getJson('today-omzet-zt', dateToString(start), dateToString(end));
     return tdyzt;
 }
@@ -195,7 +185,6 @@ function getOmzetTodayZT(year, month, day) {
 function getOmzetMonthlyZT(year, month, day) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     monthlyzt = getJson('omzet-monthly-zt', dateToString(start), dateToString(end));
     return monthlyzt;
 }
@@ -203,7 +192,6 @@ function getOmzetMonthlyZT(year, month, day) {
 function getOmzetMonthlyZT1(year, month, day) {
     var start = new Date(year, 0, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     monthly = getJson('omzet-monthly-zt1', dateToString(start), dateToString(end));
     return monthly;
 }
@@ -211,7 +199,6 @@ function getOmzetMonthlyZT1(year, month, day) {
 function getActiveMember(year, month, day) {
     var start = new Date(year, month - 3, day);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     act = getJson('active-member', dateToString(start), dateToString(end));
     return act;
 }
@@ -219,7 +206,6 @@ function getActiveMember(year, month, day) {
 function getActiveMember1(year, month, day) {
     var start = new Date(year, month - 2, day);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     act = getJson('active-member', dateToString(start), dateToString(end));
     return act;
 }
@@ -227,7 +213,6 @@ function getActiveMember1(year, month, day) {
 function getActiveMemberTdy(year, month, day) {
     var start = new Date(year, month - 2, 1);
     var end = new Date(year, month - 1, day);
-    console.error(arguments.callee.name + ': ' + dateToString(start) +" "+ dateToString(end))
     act = getJson('active-member', dateToString(start), dateToString(end));
     return act;
 }
@@ -245,7 +230,7 @@ function parseOmzet(data) {
     data.member.forEach(element => {
         omzet.member.push(element.jumlah);
     });
-    for (let i=0; i < omzet.guest.length; i++){
+    for (let i = 0; i < omzet.guest.length; i++) {
         omzet.total.push(parseInt(omzet.guest[i]) + parseInt(omzet.member[i]));
     }
     return omzet;
