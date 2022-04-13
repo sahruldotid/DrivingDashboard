@@ -34,7 +34,7 @@
                                  label: 'Omzet ZT 3',
                                  data: parseOmzetZT(daftarBulananZT).zt3,
                                  fill: false,
-                                 borderColor: '#F34A02',
+                                 borderColor: '#5DBFBD',
                                  tension: 0.1
                              },
                              {
