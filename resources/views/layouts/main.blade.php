@@ -8,9 +8,11 @@
         const urlParams = new URLSearchParams(queryString);
         const dateParams = urlParams.get('date');
         if (dateParams) {
-            var date = new Date(dateParams);
+            var today = new Date(dateParams);
+            var date = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
         } else {
-            var date = new Date();
+            var today = new Date();
+            var date = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
         }
 
     </script>
