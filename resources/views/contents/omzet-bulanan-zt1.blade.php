@@ -19,21 +19,21 @@
                                  label: 'Omzet Member',
                                  data: parseOmzet(daftarBulananZT1).member,
                                  fill: false,
-                                 borderColor: 'rgb(39, 149, 39)',
+                                 borderColor: 'blue',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Guest',
                                  data: parseOmzet(daftarBulananZT1).guest,
                                  fill: false,
-                                 borderColor: 'rgb(255, 0, 0)',
+                                 borderColor: '#57FE00',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet Total',
                                  data: parseOmzet(daftarBulananZT1).total,
                                  fill: false,
-                                 borderColor: 'rgb(75, 192, 192)',
+                                 borderColor: '#F34A02',
                                  tension: 0.1
                              }]
                          },

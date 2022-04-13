@@ -27,21 +27,21 @@
                                  label: 'Omzet ZT 2',
                                  data: parseOmzetZT(daftarBulananZT).zt2,
                                  fill: false,
-                                 borderColor: 'green',
+                                 borderColor: '#57FE00',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet ZT 3',
                                  data: parseOmzetZT(daftarBulananZT).zt3,
                                  fill: false,
-                                 borderColor: 'rgb(75, 192, 192)',
+                                 borderColor: '#F34A02',
                                  tension: 0.1
                              },
                              {
                                  label: 'Omzet ZT Total',
                                  data: parseOmzetZT(daftarBulananZT).total,
                                  fill: false,
-                                 borderColor: 'red',
+                                 borderColor: '#F34A02',
                                  tension: 0.1
                              }]
                          },

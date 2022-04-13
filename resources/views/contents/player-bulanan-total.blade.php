@@ -19,21 +19,21 @@
                                     label: 'Player Member',
                                     data: parsePlayer(daftarPlayerBulanan).member,
                                     fill: false,
-                                    borderColor: 'rgb(39, 149, 39)',
+                                    borderColor: 'blue',
                                     tension: 0.1
                                 },
                                 {
                                     label: 'Player Guest',
                                     data: parsePlayer(daftarPlayerBulanan).guest,
                                     fill: false,
-                                    borderColor: 'rgb(255, 0, 0)',
+                                    borderColor: '#57FE00',
                                     tension: 0.1
                                 },
                                 {
                                     label: 'Player Total',
                                     data: parsePlayer(daftarPlayerBulanan).total,
                                     fill: false,
-                                    borderColor: 'rgb(75, 192, 192)',
+                                    borderColor: '#F34A02',
                                     tension: 0.1
                                 }
                             ]
