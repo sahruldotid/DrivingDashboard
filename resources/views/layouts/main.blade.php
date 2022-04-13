@@ -4,7 +4,15 @@
 <head>
     @include('partials.header')
     <script>
-        var date = new Date();
+        const queryString = window.location.search;
+        const urlParams = new URLSearchParams(queryString);
+        const dateParams = urlParams.get('date');
+        if (dateParams) {
+            var date = new Date(dateParams);
+        } else {
+            var date = new Date();
+        }
+
     </script>
 </head>
 
