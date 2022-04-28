@@ -532,7 +532,7 @@ class OmzetController extends Controller
             ], 200, [], JSON_PRETTY_PRINT);
         }
 
-        function ytd_omzet(Request $request){
+    function ytd_omzet(Request $request){
        $this->validate($request, [
             'startDate'  =>  'required|date',
             'endDate'    =>  'required|date|after_or_equal:start_date'
@@ -721,7 +721,7 @@ class OmzetController extends Controller
                         left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                         inner join master_ma.ware wr on wr.wno=ol.wno
                         inner join master_ma.deppro dp on wr.dept_code = dp.code
-                        where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= date('$request->startDate') and date(od.date_ref) <= '$request->endDate' and dp.code='420' AND wr.wno='03' AND (cast(od.date_ref as time) between '05:00:00.000000' and '12:00:00.000000')
+                        where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' AND wr.wno='03' AND (cast(od.date_ref as time) between '05:00:00.000000' and '12:00:00.000000')
                         group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                         order by tanggal asc
                         ) as a
@@ -877,7 +877,7 @@ class OmzetController extends Controller
                         left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                         inner join master_ma.ware wr on wr.wno=ol.wno
                         inner join master_ma.deppro dp on wr.dept_code = dp.code
-                        where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and date(od.date_ref) >= date('$request->startDate') and date(od.date_ref) <= '$request->endDate' and dp.code='420' AND wr.wno='03' AND (cast(od.date_ref as time) between '05:00:00.000000' and '12:00:00.000000')
+                        where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' and (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' AND wr.wno='03' AND (cast(od.date_ref as time) between '05:00:00.000000' and '12:00:00.000000')
                         group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                         order by tanggal asc
                         ) as a
