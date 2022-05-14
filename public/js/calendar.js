@@ -6,7 +6,13 @@
 
 // create function that return string date in indonesa, example Sabtu, 26 Desember 2022
 function getToday() {
-    var today = new Date();
+    let searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has('date')) {
+        let date = searchParams.get('date');
+        let today = new Date(date);
+    } else {
+        let today = new Date();
+    }
     var day = today.toLocaleString('id-ID', { weekday: 'long', timeZone: 'Asia/Jakarta' });
     var date = today.getDate();
     var month = today.toLocaleString('id-ID', { month: 'long', timeZone: 'Asia/Jakarta' });

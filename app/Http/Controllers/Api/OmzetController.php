@@ -103,36 +103,21 @@ class OmzetController extends Controller
             'startDate'  =>  'required|date',
             'endDate'    =>  'required|date|after_or_equal:start_date'
         ]);
-
-        $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
+        $query = "select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                             inner join master_ma.ware wr on wr.wno=ol.wno
                             inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' AND (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%member%'
+                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' AND (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%person%'
                             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                             order by tanggal asc
                             ) as a
 
                             group by a.tanggal
-                            order by a.tanggal asc");
-
-        $guest = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
-                            select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
-                            from golf_fnb.order_list ol
-                            left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
-                            inner join master_ma.ware wr on wr.wno=ol.wno
-                            inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' AND (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%guest%'
-                            group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
-                            order by tanggal asc
-                            ) as a
-
-                            group by a.tanggal
-                            order by a.tanggal asc");
-
-        // fill the blank data
+                            order by a.tanggal asc";
+        $member = DB::select(str_replace('person', 'member', $query));
+        $guest = DB::select(str_replace('person', 'guest', $query));
         $period = $this->getMonthPeriod($request->startDate, $request->endDate);
         $member = $this->formatOmzet($period, json_decode(json_encode($member), true));
         $guest = $this->formatOmzet($period, json_decode(json_encode($guest), true));
@@ -150,36 +135,22 @@ class OmzetController extends Controller
             'startDate'  =>  'required|date',
             'endDate'    =>  'required|date|after_or_equal:start_date'
         ]);
-
-        $member = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
+        $query = "select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
                             select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
                             from golf_fnb.order_list ol
                             left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
                             inner join master_ma.ware wr on wr.wno=ol.wno
                             inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' AND (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%member%' AND (extract(hour from od.date_ref) BETWEEN 16 AND 20)
+                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' AND (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%person%' AND (extract(hour from od.date_ref) BETWEEN 16 AND 20)
                             group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
                             order by tanggal asc
                             ) as a
 
                             group by a.tanggal
-                            order by a.tanggal asc");
+                            order by a.tanggal asc";
 
-        $guest = DB::select("select to_char(a.tanggal, 'YYYY-MM') as tanggal, sum(a.amount) as jumlah from (
-                            select date_trunc('month', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
-                            from golf_fnb.order_list ol
-                            left join golf_fnb.order_ref od on od.id_ref=ol.id_ref
-                            inner join master_ma.ware wr on wr.wno=ol.wno
-                            inner join master_ma.deppro dp on wr.dept_code = dp.code
-                            where od.trans_status='CLOSE' and coalesce(od.status,'') != 'CANCELED' and coalesce(od.status,'')='' AND (od.date_ref BETWEEN '$request->startDate 00:00:00' and '$request->endDate 23:59:59.999999') and dp.code='420' and ol.wno='03' and LOWER(ol.name) LIKE '%guest%' AND (extract(hour from od.date_ref) BETWEEN 16 AND 20)
-                            group by ol.code_item, tanggal, ol.name, ol.wno, ol.price, coalesce(ol.unit_code,''), wr.ware_group
-                            order by tanggal asc
-                            ) as a
-
-                            group by a.tanggal
-                            order by a.tanggal asc");
-
-
+        $member = DB::select(str_replace('person', 'member', $query));
+        $guest = DB::select(str_replace('person', 'guest', $query));
         $period = $this->getMonthPeriod($request->startDate, $request->endDate);
         $member = $this->formatOmzet($period, json_decode(json_encode($member), true));
         $guest = $this->formatOmzet($period, json_decode(json_encode($guest), true));
@@ -363,7 +334,7 @@ class OmzetController extends Controller
              'startDate'  =>  'required|date',
              'endDate'    =>  'required|date|after_or_equal:start_date'
          ]);
- 
+
          $member = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
             select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
             from golf_fnb.order_list ol
@@ -377,7 +348,7 @@ class OmzetController extends Controller
 
             group by a.tanggal
             order by a.tanggal asc");
- 
+
          $guest = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
             select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
             from golf_fnb.order_list ol
@@ -391,7 +362,7 @@ class OmzetController extends Controller
 
             group by a.tanggal
             order by a.tanggal asc");
- 
+
          $total = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
             select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
             from golf_fnb.order_list ol
@@ -405,7 +376,7 @@ class OmzetController extends Controller
 
             group by a.tanggal
             order by a.tanggal asc");
- 
+
          return response()->json([
              'member' => $member,
              'guest' => $guest,
@@ -418,7 +389,7 @@ class OmzetController extends Controller
              'startDate'  =>  'required|date',
              'endDate'    =>  'required|date|after_or_equal:start_date'
          ]);
- 
+
          $zt1 = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
             select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
             from golf_fnb.order_list ol
@@ -432,7 +403,7 @@ class OmzetController extends Controller
 
             group by a.tanggal
             order by a.tanggal asc");
- 
+
          $zt2 = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
             select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
             from golf_fnb.order_list ol
@@ -446,7 +417,7 @@ class OmzetController extends Controller
 
             group by a.tanggal
             order by a.tanggal asc");
- 
+
          $zt3 = DB::select("select a.tanggal, sum(a.amount) as jumlah from (
             select date_trunc('day', od.date_ref) as tanggal, sum(coalesce(ol.dpp_orderlist,0)) as amount
             from golf_fnb.order_list ol
@@ -460,7 +431,7 @@ class OmzetController extends Controller
 
             group by a.tanggal
             order by a.tanggal asc");
-            
+
          return response()->json([
              'zt1' => $zt1,
              'zt2' => $zt2,

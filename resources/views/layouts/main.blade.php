@@ -53,12 +53,6 @@
                 @include('contents.omzet-bulanan-zt2')
                 @include('contents.omzet-bulanan-zt3')
             </div>
-            <footer>
-                <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
-                </div>
-                <div class="clearfix"></div>
-            </footer>
         </div>
     </div>
     @include('partials.footer')
